@@ -25,9 +25,7 @@
       z-index:0;
     }
 
-    canvas {
-      display:block;
-    }
+    canvas { display:block; }
 
     /* Container do menu */
     .container {
@@ -76,13 +74,16 @@
     .subitems li {
       list-style:none;
       margin: 5px 0;
-      color:#ccc;
-      font-size:1rem;
-      cursor:pointer;
+    }
+
+    .subitems a {
+      text-decoration: none;
+      color: #ccc;
+      display: block;
       transition: color 0.3s, transform 0.3s;
     }
 
-    .subitems li:hover {
+    .subitems a:hover {
       color:#00ffaa;
       transform: translateX(5px);
     }
@@ -116,57 +117,76 @@
   </div>
 
   <div class="container">
+
+    <!-- Pedido de Compras -->
     <div class="card">
       <h2>Pedido de Compras</h2>
       <ul class="subitems">
-        <li>ACHE</li>
-        <li>CHIESI</li>
+        <li><a href="pedido_compras_ache.html">ACHE</a></li>
+        <li><a href="pedido_compras_chiesi.html">CHIESI</a></li>
       </ul>
     </div>
 
+    <!-- Envio de Relatório a Fornecedores -->
     <div class="card">
       <h2>Envio de Relatório a Fornecedores</h2>
       <ul class="subitems">
-        <li>CAMBER</li>
-        <li>CHIESI</li>
-        <li>FARMARIN</li>
-        <li>HYPERA</li>
-        <li>TEUTO</li>
-        <li>ZYDUS</li>
+        <li><a href="relatorio_camber.html">CAMBER</a></li>
+        <li><a href="relatorio_chiesi.html">CHIESI</a></li>
+        <li><a href="relatorio_farmarin.html">FARMARIN</a></li>
+        <li><a href="relatorio_hypera.html">HYPERA</a></li>
+        <li><a href="relatorio_teuto.html">TEUTO</a></li>
+        <li><a href="relatorio_zydus.html">ZYDUS</a></li>
       </ul>
     </div>
 
+    <!-- Reservas -->
     <div class="card">
       <h2>Reservas</h2>
       <ul class="subitems">
-        <li>Conferir Planilha de validade curta Power BI</li>
-        <li>Reserva Protheus</li>
+        <li><a href="reservas_validade_powerbi.html">Conferir Planilha de validade curta Power BI</a></li>
+        <li><a href="reserva_protheus.html">Reserva Protheus</a></li>
       </ul>
     </div>
 
+    <!-- Transferência entre filiais -->
     <div class="card">
       <h2>Transferência entre filiais</h2>
+      <ul class="subitems">
+        <li><a href="transferencia_filiais.html">Ir para procedimento</a></li>
+      </ul>
     </div>
 
+    <!-- Controle de reservas em pedidos de venda -->
     <div class="card">
       <h2>Controle de reservas em pedidos de venda</h2>
+      <ul class="subitems">
+        <li><a href="controle_reservas_pedidos.html">Ir para procedimento</a></li>
+      </ul>
     </div>
 
+    <!-- DE/PARA -->
     <div class="card">
       <h2>DE/PARA</h2>
       <ul class="subitems">
-        <li>Novos de para</li>
-        <li>Ajuste de para</li>
-        <li>Alterar preço</li>
-        <li>Alterar descrição</li>
+        <li><a href="depara_novos.html">Novos de para</a></li>
+        <li><a href="depara_ajuste.html">Ajuste de para</a></li>
+        <li><a href="depara_alterar_preco.html">Alterar preço</a></li>
+        <li><a href="depara_alterar_descricao.html">Alterar descrição</a></li>
       </ul>
     </div>
 
+    <!-- Emissão de Relatório IQVIA / CLOSE-UP -->
     <div class="card">
       <h2>Emissão de Relatório IQVIA / CLOSE-UP</h2>
+      <ul class="subitems">
+        <li><a href="emissao_relatorio_iqvia.html">Ir para procedimento</a></li>
+      </ul>
     </div>
 
+    <!-- Botão voltar -->
     <a href="index.html" class="back-btn">Voltar</a>
+
   </div>
 
   <script>
