@@ -12,7 +12,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;font-family:'Inter',sans-serif;}
 
-/* BACKGROUND ANIMADO */
+/* BACKGROUND */
 body{
   background: radial-gradient(circle at top, #0f2027, #000);
   overflow-x:hidden;
@@ -59,30 +59,17 @@ header p{
 
 /* CARD */
 .card{
-  position:relative;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(15px);
   border-radius:20px;
   padding:25px;
   cursor:pointer;
-  transform-style:preserve-3d;
   transition:.4s ease;
   border:1px solid rgba(0,255,234,.15);
-  overflow:hidden;
-}
-
-.card::before{
-  content:'';
-  position:absolute;
-  inset:-2px;
-  background:linear-gradient(120deg,#00ffee,#0066ff,#00ffaa);
-  opacity:.25;
-  filter:blur(20px);
-  z-index:-1;
 }
 
 .card:hover{
-  transform:rotateX(8deg) rotateY(-8deg) translateY(-10px);
+  transform:translateY(-8px);
   box-shadow:0 40px 80px rgba(0,255,234,.25);
 }
 
@@ -107,11 +94,12 @@ header p{
   margin:8px 0;
 }
 
+/* LINKS */
 .subitems a{
   color:#ccc;
   text-decoration:none;
   display:block;
-  padding:6px 10px;
+  padding:8px 10px;
   border-radius:8px;
   transition:.3s;
 }
@@ -120,27 +108,6 @@ header p{
   background:rgba(0,255,234,.15);
   color:#00ffee;
   transform:translateX(6px);
-}
-
-/* BOTÃO */
-.back{
-  grid-column:1/-1;
-  margin-top:30px;
-  text-align:center;
-}
-.back a{
-  padding:14px 40px;
-  border-radius:40px;
-  background:linear-gradient(90deg,#00ffee,#0066ff);
-  color:#000;
-  font-weight:600;
-  text-decoration:none;
-  box-shadow:0 0 30px rgba(0,255,234,.6);
-  transition:.4s;
-}
-.back a:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 60px rgba(0,255,234,1);
 }
 
 /* REVEAL */
@@ -166,14 +133,16 @@ header p{
 
 <div class="container">
 
+  <!-- PEDIDO DE COMPRAS -->
   <div class="card">
     <h2>Pedido de Compras</h2>
     <ul class="subitems">
-      <li><a href="#">ACHE</a></li>
-      <li><a href="#">CHIESI</a></li>
+      <li><a href="pedido_compras.html#ache">ACHE</a></li>
+      <li><a href="pedido_compras.html#chiesi">CHIESI</a></li>
     </ul>
   </div>
 
+  <!-- RELATÓRIOS -->
   <div class="card">
     <h2>Relatórios</h2>
     <ul class="subitems">
@@ -183,6 +152,7 @@ header p{
     </ul>
   </div>
 
+  <!-- RESERVAS -->
   <div class="card">
     <h2>Reservas</h2>
     <ul class="subitems">
@@ -191,6 +161,7 @@ header p{
     </ul>
   </div>
 
+  <!-- DE / PARA -->
   <div class="card">
     <h2>DE / PARA</h2>
     <ul class="subitems">
@@ -201,14 +172,10 @@ header p{
     </ul>
   </div>
 
-  <div class="back">
-    <a href="#">Voltar</a>
-  </div>
-
 </div>
 
 <script>
-// EXPAND
+// EXPANDIR CARD
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('click',()=>{
     const ul=card.querySelector('.subitems');
@@ -222,7 +189,6 @@ const observer=new IntersectionObserver(entries=>{
     if(e.isIntersecting)e.target.classList.add('show');
   });
 },{threshold:.2});
-
 document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 
 // PARTICLES
@@ -230,7 +196,7 @@ const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
 canvas.width=innerWidth;canvas.height=innerHeight;
 
 const p=[];
-for(let i=0;i<150;i++){
+for(let i=0;i<140;i++){
   p.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
