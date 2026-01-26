@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido de Compras • ACHE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+  min-height:100vh;
+}
+
+/* HEADER */
+header{
+  padding:50px 20px;
+  text-align:center;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.8rem;
+  text-shadow:0 0 25px #00ffee;
+}
+header p{
+  margin-top:10px;
+  opacity:.7;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1000px;
+  margin:0 auto 60px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+/* BLOCO */
+.block{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  border-radius:20px;
+  padding:30px;
+  border:1px solid rgba(0,255,234,.15);
+  box-shadow:0 0 40px rgba(0,255,234,.12);
+  animation:fadeUp .8s ease forwards;
+}
+
+.block h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:10px;
+}
+
+.block h3{
+  margin-top:20px;
+  color:#00ffaa;
+}
+
+.block ul{
+  margin-top:15px;
+  padding-left:20px;
+}
+
+.block li{
+  margin:8px 0;
+  line-height:1.6;
+}
+
+/* DESTAQUES */
+.tip{
+  margin-top:20px;
+  padding:15px;
+  border-left:4px solid #00ffee;
+  background:rgba(0,255,234,.1);
+  border-radius:8px;
+}
+
+.alert{
+  margin-top:20px;
+  padding:15px;
+  border-left:4px solid #ffae00;
+  background:rgba(255,174,0,.1);
+  border-radius:8px;
+}
+
+/* BOTÃO */
+.back{
+  text-align:center;
+  margin-top:20px;
+}
+.back a{
+  display:inline-block;
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(0,255,234,.7);
+  transition:.4s;
+}
+.back a:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏷️ Pedido de Compras • ACHE</h1>
+  <p>Procedimento operacional padrão</p>
+</header>
+
+<div class="container">
+
+  <div class="block">
+    <h2>📌 Recebimento da Planilha</h2>
+    <p><strong>🎯 Objetivo:</strong> Receber e iniciar o tratamento da planilha de pedido de compras enviada pelo fornecedor ou responsável interno.</p>
+
+    <h3>📥 Procedimento:</h3>
+    <ul>
+      <li>Receber a planilha de pedido de compras enviada:
+        <ul>
+          <li>Pelo fornecedor <strong>ACHE</strong>, ou</li>
+          <li>Pelo responsável interno (<strong>Vilmar</strong>)</li>
+        </ul>
+      </li>
+      <li>Acessar o sistema <strong>Protheus</strong></li>
+      <li>No menu inicial, selecionar o módulo <strong>SIGAMDI</strong>, utilizando o ambiente <strong>Produção</strong></li>
+    </ul>
+
+    <div class="tip">
+      💡 <strong>Dica:</strong> Sempre valide se a planilha recebida corresponde à política vigente antes de iniciar qualquer lançamento no sistema.
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>📌 Login no Protheus e Criação do Pedido</h2>
+    <p><strong>🎯 Objetivo:</strong> Realizar o login no sistema e iniciar a criação do pedido de compras conforme a planilha recebida.</p>
+
+    <h3>📥 Procedimento:</h3>
+    <ul>
+      <li>Informar as credenciais de acesso (login e senha) e pressionar <strong>Enter</strong></li>
+      <li>Conferir se a filial informada corresponde à filial da planilha</li>
+      <li>Selecionar o <strong>Ambiente de Compras (2)</strong> e clicar em Entrar</li>
+      <li>Acessar o menu:
+        <strong>Atualizações &gt; Pedidos &gt; Pedidos de Compra</strong>
+      </li>
+      <li>Clicar em <strong>Confirmar</strong></li>
+      <li>Clicar em <strong>Incluir</strong> para criar um novo pedido</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>📌 Etapa 3 – Seleção do Fornecedor</h2>
+    <p><strong>🎯 Objetivo:</strong> Selecionar corretamente o fornecedor no sistema.</p>
+
+    <h3>📥 Procedimento:</h3>
+    <ul>
+      <li>No campo <strong>Fornecedor</strong>, clicar na lupa</li>
+      <li>Clicar no ícone de três linhas e selecionar <strong>Nome</strong></li>
+      <li>Buscar pelo fornecedor <strong>LABOFARMA</strong> (ACHE)</li>
+      <li>Selecionar o registro com <strong>Loja 17</strong> e clicar em OK</li>
+    </ul>
+
+    <div class="alert">
+      ⚠️ <strong>Atenção:</strong> Sempre confirme a loja correta antes de prosseguir.
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>📌 Etapa 4 – Inclusão dos Produtos</h2>
+    <p><strong>🎯 Objetivo:</strong> Inserir corretamente os produtos conforme a planilha.</p>
+
+    <h3>📥 Procedimento:</h3>
+    <ul>
+      <li>No campo <strong>Cond.</strong>, informar o código <strong>060</strong></li>
+      <li>No campo <strong>Produto</strong>, colar o código e pressionar <strong>TAB</strong></li>
+      <li>Caso não localize o produto, acrescentar <strong>x1</strong> ao final da descrição</li>
+      <li>Confirmar se o <strong>Armazém</strong> está como <strong>01</strong></li>
+      <li>Informar a <strong>Quantidade de caixas</strong></li>
+      <li>Preencher o campo <strong>% Desconto Item</strong></li>
+      <li>Pressionar <strong>TAB</strong> e clicar em <strong>Salvar</strong></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>📌 Etapa 5 – Finalização e Impressão</h2>
+    <p><strong>🎯 Objetivo:</strong> Finalizar o pedido, gerar o número correto e salvar o documento.</p>
+
+    <h3>📥 Procedimento:</h3>
+    <ul>
+      <li>Copiar o número do pedido e acrescentar <strong>zero à esquerda</strong></li>
+      <li>Acessar <strong>Outras Ações &gt; Imprimir</strong></li>
+      <li>Informar o número do pedido nos dois campos</li>
+      <li>Salvar no diretório:
+        <strong>Z:\Vilmar\Pedidos de Compras</strong>
+      </li>
+    </ul>
+  </div>
+
+  <div class="back">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+  </div>
+
+</div>
+
+</body>
+</html>
