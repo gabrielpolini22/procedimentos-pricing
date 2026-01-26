@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Reservas • Pedido de Venda</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+  min-height:100vh;
+}
+
+/* HEADER */
+header{
+  padding:50px 20px;
+  text-align:center;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.8rem;
+  text-shadow:0 0 25px #00ffee;
+}
+header p{
+  margin-top:10px;
+  opacity:.7;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1000px;
+  margin:0 auto 60px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+/* BLOCO */
+.block{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  border-radius:20px;
+  padding:30px;
+  border:1px solid rgba(0,255,234,.15);
+  box-shadow:0 0 40px rgba(0,255,234,.12);
+  animation:fadeUp .6s ease forwards;
+}
+
+.block h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:10px;
+}
+
+.block h3{
+  margin-top:20px;
+  color:#00ffaa;
+}
+
+.block ul{
+  margin-top:15px;
+  padding-left:20px;
+}
+
+.block li{
+  margin:8px 0;
+  line-height:1.6;
+}
+
+/* CHECKLIST */
+.checklist li{
+  list-style:none;
+  margin:10px 0;
+}
+
+.checklist input{
+  margin-right:10px;
+  transform:scale(1.2);
+}
+
+/* ALERTA */
+.alert{
+  margin-top:20px;
+  padding:15px;
+  border-left:4px solid #ffae00;
+  background:rgba(255,174,0,.1);
+  border-radius:8px;
+}
+
+/* BOTÃO */
+.back{
+  text-align:center;
+  margin-top:20px;
+}
+.back a{
+  display:inline-block;
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(0,255,234,.7);
+  transition:.4s;
+}
+.back a:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>📦 Controle de Reservas</h1>
+  <p>Pedidos de Venda • Protheus</p>
+</header>
+
+<div class="container">
+
+  <!-- ETAPA 1 -->
+  <div class="block">
+    <h2>📌 Etapa 1 – Acesso ao Sistema</h2>
+    <p><strong>🎯 Objetivo:</strong> Acessar corretamente o ambiente para controle das reservas.</p>
+
+    <ul class="checklist">
+      <li><label><input type="checkbox"> Abrir o sistema Protheus</label></li>
+      <li><label><input type="checkbox"> Selecionar o Ambiente 2 – Compras</label></li>
+      <li><label><input type="checkbox"> (Alternativo) Ambiente 13</label></li>
+    </ul>
+  </div>
+
+  <!-- ETAPA 2 -->
+  <div class="block">
+    <h2>📌 Etapa 2 – Acesso à Rotina</h2>
+    <p><strong>🎯 Objetivo:</strong> Localizar a rotina correta de controle.</p>
+
+    <ul class="checklist">
+      <li><label><input type="checkbox"> Pesquisar a rotina <strong>Reservas</strong></label></li>
+      <li><label><input type="checkbox"> Acessar o menu <strong>Faturamento</strong></label></li>
+      <li><label><input type="checkbox"> Selecionar <strong>Controle de Reservas</strong></label></li>
+      <li><label><input type="checkbox"> Clicar em <strong>Confirmar</strong></label></li>
+    </ul>
+  </div>
+
+  <!-- ETAPA 3 -->
+  <div class="block">
+    <h2>📌 Etapa 3 – Inclusão da Reserva</h2>
+    <p><strong>🎯 Objetivo:</strong> Criar o registro da reserva.</p>
+
+    <ul class="checklist">
+      <li><label><input type="checkbox"> Clicar em <strong>+ Incluir</strong></label></li>
+      <li><label><input type="checkbox"> Preencher <strong>Produto</strong></label></li>
+      <li><label><input type="checkbox"> Preencher <strong>Quantidade</strong></label></li>
+      <li><label><input type="checkbox"> Preencher <strong>Lote</strong></label></li>
+      <li><label><input type="checkbox"> Preencher <strong>Observação</strong></label></li>
+    </ul>
+  </div>
+
+  <!-- ETAPA 4 -->
+  <div class="block">
+    <h2>📌 Etapa 4 – Preenchimentos Específicos</h2>
+    <p><strong>🎯 Objetivo:</strong> Garantir os critérios corretos de reserva.</p>
+
+    <ul class="checklist">
+      <li><label><input type="checkbox"> Inserir o código correto do produto</label></li>
+      <li><label><input type="checkbox"> No campo Quantidade, pressionar <strong>F4</strong></label></li>
+      <li><label><input type="checkbox"> Inserir no campo Lote o mesmo valor utilizado anteriormente</label></li>
+    </ul>
+
+    <div class="alert">
+      ⚠️ <strong>Atenção:</strong><br>
+      • Itens com validade de até <strong>1 ano</strong> são considerados de validade curta;<br>
+      • Priorize sempre a reserva dos itens com <strong>maior validade</strong>.
+    </div>
+  </div>
+
+  <!-- VOLTAR -->
+  <div class="back">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+  </div>
+
+</div>
+
+</body>
+</html>
