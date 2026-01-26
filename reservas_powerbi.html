@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservas • Power BI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;
+  height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>Reservas • Power BI</h1>
+  <p>Conferência de Planilha — Validade Curta</p>
+</header>
+
+<div class="container">
+
+  <!-- ETAPA 1 -->
+  <div class="section">
+    <h2>📌 Acesso ao Documento</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o Power BI</span></label>
+      <label><input type="checkbox"><span>Acessar o relatório “Sulmedic – Compras – Estoque”</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 2 -->
+  <div class="section">
+    <h2>📌 Seleção da Opção</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar na opção “SULMEDIC – VALIDADE CURTA”</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 3 -->
+  <div class="section">
+    <h2>📌 Configuração do Armazém</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o campo Armazém</span></label>
+      <label><input type="checkbox"><span>Selecionar o armazém 01</span></label>
+      <label><input type="checkbox"><span>Selecionar o armazém 06</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 4 -->
+  <div class="section">
+    <h2>📌 Edição dos Dados</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar em Editar</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 5 -->
+  <div class="section">
+    <h2>📌 Aplicação de Filtro</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar a tabela</span></label>
+      <label><input type="checkbox"><span>Ativar o filtro</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 6 -->
+  <div class="section">
+    <h2>📌 Ordenação / Filtro</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar na coluna “Dias para Vencer”</span></label>
+      <label><input type="checkbox"><span>Selecionar a condição “Menor que ou igual a”</span></label>
+      <label><input type="checkbox"><span>Informar o período desejado (ex: 180 dias)</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 7 -->
+  <div class="section">
+    <h2>📌 Menu de Opções</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar a tabela</span></label>
+      <label><input type="checkbox"><span>Clicar nos três pontos (menu de opções)</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 8 -->
+  <div class="section">
+    <h2>📌 Exportação dos Dados</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar em Exportar Dados</span></label>
+      <label><input type="checkbox"><span>Selecionar “Dados com layout atual”</span></label>
+      <label><input type="checkbox"><span>Clicar em Exportar</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 9 -->
+  <div class="section">
+    <h2>📌 Ajuste de Colunas</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Ocultar as colunas destacadas</span></label>
+      <label><input type="checkbox"><span>Conferir organização final da planilha</span></label>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="section">
+    <h2>📌 Resultado Esperado</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Planilha organizada conforme padrão de validade curta</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// BACKGROUND PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('powerbi_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('powerbi_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('powerbi_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
