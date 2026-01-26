@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DE → PARA • Novos Produtos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section h3{
+  font-family:'Orbitron';
+  color:#00ffaa;
+  margin-top:18px;
+  margin-bottom:10px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+
+.path{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>🔁 DE → PARA • Novos Produtos</h1>
+  <p>Movtech • Pricing</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>📌 Objetivo</h2>
+    <p>
+      Descrever o procedimento para criação e configuração do DE → PARA de novos produtos, garantindo o correto vínculo entre
+      o produto solicitado pelo cliente e o produto comercializado pela Sulmedic.
+    </p>
+
+    <h3>🏢 Setor Responsável</h3>
+    <p>Pricing</p>
+
+    <h3>🧾 Definição</h3>
+    <p>
+      O DE → PARA consiste no vínculo entre o produto solicitado pelo cliente e o produto correspondente cadastrado na Sulmedic,
+      assegurando padronização, correta precificação e integridade das informações comerciais.
+    </p>
+
+    <h3>🖥️ Sistema Utilizado</h3>
+    <p>• Movtech</p>
+  </div>
+
+  <div class="section">
+    <h2>🔑 1. Login no Sistema</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o sistema Movtech</span></label>
+      <label><input type="checkbox"><span>Realizar login utilizando usuário e senha válidos</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🔧 2. Acesso ao Módulo DE → PARA</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o módulo específico para DE → PARA de produtos</span></label>
+      <label><input type="checkbox"><span>Confirmar que o módulo corresponde ao vínculo entre produto do cliente e produto Sulmedic</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ <strong>ATENÇÃO – Entendendo a tela</strong><br>
+      Os filtros e campos abaixo impactam diretamente a busca e o resultado do DE → PARA.
+    </div>
+
+    <h3>🧩 Campos da Tela – Descrição</h3>
+    <div class="note">
+      <strong>📅 Data Importação:</strong> indica o intervalo de datas em que o cliente cadastrou o produto.<br>
+      <strong>➡️ Orientação:</strong> sempre preencher com <strong>01/01/2023</strong> (início da utilização do DE → PARA).
+    </div>
+
+    <div class="note">
+      <strong>🧪 Molécula:</strong> corresponde ao grupo do princípio ativo do produto.
+    </div>
+
+    <div class="note">
+      <strong>📦 Produtos configurados (filtros):</strong><br><br>
+      <strong>• SOMENTE CONFIGURADOS:</strong> exibe produtos que já possuem DE → PARA.<br>
+      <em>Uso comum:</em> correção / revisão de DE → PARA existentes.<br><br>
+      <strong>• IGNORAR CONFIGURADOS:</strong> exibe produtos que ainda não possuem DE → PARA.<br>
+      <em>Uso comum:</em> criação de novos DE → PARA.
+    </div>
+
+    <div class="note">
+      <strong>📦 Produto integradora (coluna “Produto” na cotação):</strong> descrição do produto solicitado pelo cliente.<br>
+      <strong>Produto ERP:</strong> descrição/código do produto da Sulmedic.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🧭 3. Passo a passo — Criação do novo DE → PARA</h2>
+
+    <h3>3º Passo: Buscar o produto solicitado</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Pegar o produto solicitado (novo DE → PARA) na cotação / solicitação do cliente</span></label>
+    </div>
+
+    <h3>4º Passo: Identificar o código do produto (Power BI)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar: SULMEDIC - COMPRAS - ESTOQUE (Power BI)</span></label>
+      <label><input type="checkbox"><span>Buscar o produto pelo filtro Produto / Molécula</span></label>
+      <label><input type="checkbox"><span>Se não encontrar, validar com solicitante ou logística (entrada do item) — Jackson</span></label>
+    </div>
+
+    <h3>5º Passo: Pesquisar no Movtech (Produto integradora)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Pesquisar o nome do produto/molécula no campo Produto integradora (Movtech)</span></label>
+      <label><input type="checkbox"><span>Pesquisar todas as possibilidades de nome/molécula (conforme Power BI)</span></label>
+      <label><input type="checkbox"><span>Ao achar compatível, selecionar o item e preencher Produto ERP com o código encontrado no passo 4</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ <strong>Atenção:</strong> pesquisar também apenas pelo <strong>nome comercial sem a miligramagem</strong> para capturar variações de cadastro do cliente.
+    </div>
+
+    <h3>Pesquisa adicional (variações de nomes comerciais)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar: NOVOS PRODUTOS - ESTUDO_MERCADO (Power BI)</span></label>
+      <label><input type="checkbox"><span>Pesquisar o nome do produto encontrado no passo 4</span></label>
+      <label><input type="checkbox"><span>Filtrar a Molécula e remover filtro de produto para ver todas as possibilidades</span></label>
+      <label><input type="checkbox"><span>Identificar itens para novos DE → PARA conforme necessidade</span></label>
+    </div>
+
+    <h3>6º Passo: Gravar e salvar</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Inserir o vínculo e clicar em salvar</span></label>
+      <label><input type="checkbox"><span>Confirmar que o registro ficou configurado corretamente (Produto integradora → Produto ERP)</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('novosdepara_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('novosdepara_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('novosdepara_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
