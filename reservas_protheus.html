@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -47,4 +48,211 @@ header p{opacity:.7}
   border-radius:22px;
   padding:32px;
   border:1px solid rgba(0,255,234,.25);
-  box-shadow:0 0 40px rg
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;
+  height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>Reservas • Protheus</h1>
+  <p>Rotina: Reserva / Controle de Reservas</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>📌 Acesso ao Protheus</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o sistema Protheus</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Seleção do Ambiente</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar o Ambiente 2 – Compras</span></label>
+      <label><input type="checkbox"><span>(Alternativo) Selecionar o Ambiente 13</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Acesso à Rotina Reservas</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Pesquisar a rotina “Reservas”</span></label>
+      <label><input type="checkbox"><span>Acessar a rotina “Reservas”</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Acesso ao Menu Faturamento</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o menu “Faturamento”</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Controle de Reservas</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar a opção “Controle de Reservas”</span></label>
+      <label><input type="checkbox"><span>Na tela exibida, clicar em “Confirmar”</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Inclusão do Registro</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar em “+ Incluir”</span></label>
+      <label><input type="checkbox"><span>Preencher os campos obrigatórios: Produto, Quantidade, Lote e Observação</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Preenchimento do Produto</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No campo Produto, inserir o código do produto</span></label>
+    </div>
+
+    <div class="alert">
+      📌 <strong>OBSERVAÇÃO:</strong><br>
+      • Itens com validade a um ano são considerados de validade curta;<br>
+      • Priorize sempre a reserva dos itens com maior validade.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Preenchimento da Quantidade</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No campo Quantidade, selecionar o campo e pressionar a tecla F4</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Preenchimento do Lote</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No campo Lote, inserir o mesmo valor utilizado anteriormente</span></label>
+    </div>
+
+    <div class="note">
+      💡 Dica: confirme sempre se o lote corresponde ao item selecionado antes de salvar.
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('reservas_protheus_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('reservas_protheus_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('reservas_protheus_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
+```
