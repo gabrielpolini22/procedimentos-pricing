@@ -53,7 +53,6 @@ header p{
 }
 
 .card{
-  position:relative;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(15px);
   border-radius:20px;
@@ -61,11 +60,18 @@ header p{
   cursor:pointer;
   transition:.4s ease;
   border:1px solid rgba(0,255,234,.15);
+  opacity:0;
+  transform:translateY(40px);
 }
 
 .card:hover{
   transform:translateY(-8px);
   box-shadow:0 40px 80px rgba(0,255,234,.25);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .card h2{
@@ -101,15 +107,6 @@ header p{
   color:#00ffee;
   transform:translateX(6px);
 }
-
-.card{
-  opacity:0;
-  transform:translateY(40px);
-}
-.card.show{
-  opacity:1;
-  transform:translateY(0);
-}
 </style>
 </head>
 
@@ -124,53 +121,54 @@ header p{
 
 <div class="container">
 
+  <!-- PEDIDO DE COMPRAS -->
   <div class="card">
     <h2>Pedido de Compras</h2>
     <ul class="subitems">
-      <li>
-        <li><a href="pedido_compras_ache.html">ACHE</a></li>
-          ACHE
-        </a>
-      </li>
-      <li><a href="#" onclick="event.stopPropagation()">CHIESI</a></li>
+      <li><a href="pedido_compras_ache.html">ACHE</a></li>
+      <li><a href="pedido_compras_chiesi.html">CHIESI</a></li>
     </ul>
   </div>
 
+  <!-- RELATÓRIOS -->
   <div class="card">
     <h2>Relatórios</h2>
     <ul class="subitems">
-      <li><a href="#" onclick="event.stopPropagation()">CAMBER</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">HYPERA</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">TEUTO</a></li>
+      <li><a href="relatorio_camber.html">CAMBER</a></li>
+      <li><a href="relatorio_hypera.html">HYPERA</a></li>
+      <li><a href="relatorio_teuto.html">TEUTO</a></li>
     </ul>
   </div>
 
+  <!-- RESERVAS -->
   <div class="card">
     <h2>Reservas</h2>
     <ul class="subitems">
-      <li><a href="#" onclick="event.stopPropagation()">Power BI</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">Protheus</a></li>
+      <li><a href="reservas_powerbi.html">Power BI</a></li>
+      <li><a href="reserva_protheus.html">Protheus</a></li>
     </ul>
   </div>
 
+  <!-- DE PARA -->
   <div class="card">
     <h2>DE / PARA</h2>
     <ul class="subitems">
-      <li><a href="#" onclick="event.stopPropagation()">Novos</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">Ajustes</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">Preço</a></li>
-      <li><a href="#" onclick="event.stopPropagation()">Descrição</a></li>
+      <li><a href="depara_novos.html">Novos</a></li>
+      <li><a href="depara_ajustes.html">Ajustes</a></li>
+      <li><a href="depara_preco.html">Preço</a></li>
+      <li><a href="depara_descricao.html">Descrição</a></li>
     </ul>
   </div>
 
 </div>
 
 <script>
-// EXPANDIR CARD
+// EXPANDIR / FECHAR CARD (sem quebrar links)
 document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('click',()=>{
-    const ul=card.querySelector('.subitems');
-    ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight+'px';
+  card.addEventListener('click',e=>{
+    if(e.target.tagName.toLowerCase()==='a') return;
+    const ul = card.querySelector('.subitems');
+    ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight + 'px';
   });
 });
 
@@ -211,6 +209,11 @@ function draw(){
   requestAnimationFrame(draw);
 }
 draw();
+
+onresize=()=>{
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+};
 </script>
 
 </body>
