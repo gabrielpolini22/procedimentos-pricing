@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relatórios • ACHE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section h3{
+  font-family:'Orbitron';
+  color:#00ffaa;
+  margin-top:18px;
+  margin-bottom:10px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+.path{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>📊 Relatórios • ACHE</h1>
+  <p>Power BI • Exportação e envio por e-mail</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Etapa 1 — Acesso ao Power BI</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o Power BI</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Etapa 2 — Seleção do Relatório</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Localizar e abrir o relatório <strong>SULMEDIC – ACHE</strong></span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Etapa 3 — Verificação de Atualização</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Verificar se o relatório está atualizado 🔄</span></label>
+      <label><input type="checkbox"><span>Se não estiver, entrar em contato com o Ricardo para validação/atualização 📩</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Etapa 4 — Estoque-total</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar em <strong>Estoque-total (1 arquivo)</strong> 📁</span></label>
+    </div>
+
+    <h3>📤 Exportação de Arquivo</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar nos três pontos (⋮) no canto superior direito do relatório</span></label>
+      <label><input type="checkbox"><span>Selecionar <strong>Exportar dados</strong> 📤</span></label>
+      <label><input type="checkbox"><span>Clicar em <strong>Exportar</strong></span></label>
+      <label><input type="checkbox"><span>Renomear o arquivo conforme o nome da página 📝</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Lote – Validade</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a aba <strong>Lote – validade</strong></span></label>
+      <label><input type="checkbox"><span>Clicar em <strong>LOTE – VALIDADE (1 arquivo por filial)</strong> 🗂️</span></label>
+      <label><input type="checkbox"><span>Selecionar a filial desejada e exportar o arquivo 📤</span></label>
+      <label><input type="checkbox"><span>Renomear os arquivos conforme a ordem do download 🔢📂</span></label>
+      <label><input type="checkbox"><span>Renomear conforme <strong>Página + Filial</strong> 📝🏷️</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>MAPA ESTOQUE</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar/abrir a página <strong>MAPA ESTOQUE</strong> 🗺️📦</span></label>
+      <label><input type="checkbox"><span>Selecionar o período solicitado (ACHE/João): informar <strong>ANO / MÊS</strong> 📅</span></label>
+      <label><input type="checkbox"><span>Exportar por filial (mesmo padrão do Lote – Validade) 🗂️📤</span></label>
+      <label><input type="checkbox"><span>Verificar se foram gerados <strong>9 arquivos</strong> ✅📁</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📧 Envio dos Relatórios</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Após gerar todos os arquivos, enviar os relatórios ao João 📧</span></label>
+      <label><input type="checkbox"><span>Incluir no corpo do e-mail os destinatários abaixo</span></label>
+    </div>
+
+    <div class="note">
+      E-mails para copiar no envio:
+      <div class="path">Adriana.dontal@ache.com.br</div>
+      <div class="path">matheus.medeiros@ache.com.br</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('relatorio_ache_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('relatorio_ache_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('relatorio_ache_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
