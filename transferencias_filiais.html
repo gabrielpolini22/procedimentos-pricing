@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transferência entre Filiais • Pricing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+  min-height:100vh;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 30px;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.8rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{
+  opacity:.7;
+  margin-top:10px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 60px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+/* BLOCO */
+.block{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  border-radius:22px;
+  padding:30px;
+  border:1px solid rgba(0,255,234,.15);
+  box-shadow:0 0 40px rgba(0,255,234,.12);
+}
+
+/* TITULOS */
+.block h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:10px;
+}
+.block p{
+  opacity:.85;
+  margin-bottom:15px;
+}
+
+/* CHECKLIST */
+.checklist{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.checklist label{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.25);
+  transition:.3s;
+}
+.checklist label:hover{
+  background:rgba(0,255,234,.12);
+}
+.checklist input{
+  accent-color:#00ffee;
+  margin-top:4px;
+}
+.checklist span{
+  line-height:1.5;
+}
+
+/* ALERTA / DICA */
+.tip{
+  margin-top:18px;
+  padding:14px;
+  border-left:4px solid #00ffee;
+  background:rgba(0,255,234,.1);
+  border-radius:10px;
+}
+.alert{
+  margin-top:18px;
+  padding:14px;
+  border-left:4px solid #ffae00;
+  background:rgba(255,174,0,.1);
+  border-radius:10px;
+}
+
+/* BOTÃO */
+.back{
+  text-align:center;
+  margin-top:10px;
+}
+.back a{
+  display:inline-block;
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(0,255,234,.7);
+  transition:.4s;
+}
+.back a:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🚚 Transferência entre Filiais</h1>
+  <p>Procedimento operacional • Pricing</p>
+</header>
+
+<div class="container">
+
+  <!-- ETAPA 1 -->
+  <div class="block">
+    <h2>📌 Etapa 1 – Abertura do Arquivo</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o arquivo Excel “TRANSF...”</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 2 -->
+  <div class="block">
+    <h2>📌 Etapa 2 – Solicitação de Paletes</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Encaminhar solicitação ao Jackson</span></label>
+      <label><input type="checkbox"><span>Solicitar quantidade de paletes</span></label>
+      <label><input type="checkbox"><span>Aguardar retorno ou preencher conforme informado</span></label>
+    </div>
+    <div class="alert">
+      ⚠️ Cada caminhão comporta no máximo <strong>11 paletes</strong>.  
+      Caso ultrapasse, comunicar <strong>João ou Vilmar</strong>.
+    </div>
+  </div>
+
+  <!-- ETAPA 3 -->
+  <div class="block">
+    <h2>📌 Etapa 3 – Conferência no Protheus</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o Protheus e selecionar a filial correta</span></label>
+      <label><input type="checkbox"><span>Conferir origem e destino da transferência no Excel</span></label>
+      <label><input type="checkbox"><span>Selecionar Ambiente 5 – Faturamento</span></label>
+      <label><input type="checkbox"><span>Clicar em Entrar</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 4 -->
+  <div class="block">
+    <h2>📌 Etapa 4 – Produtos e Kardex</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar rotina Produtos (Favoritos ou MATA010)</span></label>
+      <label><input type="checkbox"><span>Confirmar operação</span></label>
+      <label><input type="checkbox"><span>Abrir Kardex (Outras Ações)</span></label>
+      <label><input type="checkbox"><span>Confirmar armazém 01 ou 06</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 5 -->
+  <div class="block">
+    <h2>📌 Etapa 5 – Documento (CFO)</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Localizar último CFO iniciado em “21”</span></label>
+      <label><input type="checkbox"><span>Copiar número antes do “/”</span></label>
+      <label><input type="checkbox"><span>Pesquisar documento no Windows</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 6 -->
+  <div class="block">
+    <h2>📌 Etapa 6 – Pedido de Venda</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar MATA410 – Pedido de Venda</span></label>
+      <label><input type="checkbox"><span>Localizar última transferência</span></label>
+      <label><input type="checkbox"><span>Copiar pedido (Código Sulmedic 000030)</span></label>
+      <label><input type="checkbox"><span>Remover itens antigos e incluir novos</span></label>
+    </div>
+  </div>
+
+  <!-- ETAPA 7 -->
+  <div class="block">
+    <h2>📌 Etapa 7 – Finalização</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Preencher quantidade, preço unitário e Tp. Operação = F</span></label>
+      <label><input type="checkbox"><span>Informar número da reserva (se houver)</span></label>
+      <label><input type="checkbox"><span>Salvar pedido e copiar número</span></label>
+      <label><input type="checkbox"><span>Enviar e-mail com print da transferência</span></label>
+    </div>
+  </div>
+
+  <div class="back">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+  </div>
+
+</div>
+
+</body>
+</html>
