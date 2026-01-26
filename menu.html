@@ -1,266 +1,265 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu de Procedimentos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procedimentos • Pricing</title>
 
-    body, html {
-      height: 100%;
-      background: linear-gradient(135deg,#0f0f0f,#1a1a1a);
-      overflow-x: hidden;
-      color:#fff;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    /* Partículas ao fundo */
-    .particles {
-      position: fixed;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      z-index:0;
-    }
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:'Inter',sans-serif;}
 
-    canvas { display:block; }
+/* BACKGROUND ANIMADO */
+body{
+  background: radial-gradient(circle at top, #0f2027, #000);
+  overflow-x:hidden;
+  color:#fff;
+}
 
-    /* Container do menu */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+/* CANVAS */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
 
-    /* Cartões dos procedimentos */
-    .card {
-      background: rgba(0,0,0,0.6);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(0,255,234,0.4);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      overflow: hidden;
-      position: relative;
-    }
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 20px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  font-size:3rem;
+  color:#00ffee;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{
+  opacity:.7;
+  margin-top:10px;
+  letter-spacing:2px;
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 40px rgba(0,255,234,0.8);
-    }
+/* GRID */
+.container{
+  max-width:1200px;
+  margin:50px auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  position:relative;
+  z-index:2;
+}
 
-    .card h2 {
-      font-family:'Orbitron', sans-serif;
-      font-size:1.5rem;
-      color:#00ffea;
-      margin-bottom:10px;
-      text-shadow: 0 0 10px #00ffea;
-    }
+/* CARD */
+.card{
+  position:relative;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border-radius:20px;
+  padding:25px;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:.4s ease;
+  border:1px solid rgba(0,255,234,.15);
+  overflow:hidden;
+}
 
-    .subitems {
-      max-height:0;
-      overflow:hidden;
-      transition: max-height 0.5s ease;
-      padding-left:10px;
-    }
+.card::before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(120deg,#00ffee,#0066ff,#00ffaa);
+  opacity:.25;
+  filter:blur(20px);
+  z-index:-1;
+}
 
-    .subitems li {
-      list-style:none;
-      margin: 5px 0;
-    }
+.card:hover{
+  transform:rotateX(8deg) rotateY(-8deg) translateY(-10px);
+  box-shadow:0 40px 80px rgba(0,255,234,.25);
+}
 
-    .subitems a {
-      text-decoration: none;
-      color: #ccc;
-      display: block;
-      transition: color 0.3s, transform 0.3s;
-    }
+/* TITULO */
+.card h2{
+  font-family:'Orbitron';
+  font-size:1.4rem;
+  color:#00ffee;
+  text-shadow:0 0 15px #00ffee;
+}
 
-    .subitems a:hover {
-      color:#00ffaa;
-      transform: translateX(5px);
-    }
+/* SUBITENS */
+.subitems{
+  margin-top:15px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .6s ease;
+}
 
-    /* Botão voltar */
-    .back-btn {
-      grid-column: 1 / -1;
-      display:block;
-      text-align:center;
-      margin:20px auto 0;
-      padding:12px;
-      font-size:1rem;
-      color:#fff;
-      background: linear-gradient(90deg,#00ffea,#0066ff);
-      border-radius:25px;
-      text-decoration:none;
-      transition:0.3s;
-      box-shadow:0 0 20px rgba(0,255,234,0.5);
-    }
+.subitems li{
+  list-style:none;
+  margin:8px 0;
+}
 
-    .back-btn:hover {
-      transform: scale(1.05);
-      box-shadow:0 0 40px rgba(0,255,234,0.8);
-    }
+.subitems a{
+  color:#ccc;
+  text-decoration:none;
+  display:block;
+  padding:6px 10px;
+  border-radius:8px;
+  transition:.3s;
+}
 
-  </style>
+.subitems a:hover{
+  background:rgba(0,255,234,.15);
+  color:#00ffee;
+  transform:translateX(6px);
+}
+
+/* BOTÃO */
+.back{
+  grid-column:1/-1;
+  margin-top:30px;
+  text-align:center;
+}
+.back a{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.back a:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+
+/* REVEAL */
+.card{
+  opacity:0;
+  transform:translateY(40px);
+}
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
 </head>
+
 <body>
-  <div class="particles">
-    <canvas id="particle-canvas"></canvas>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>Pricing</h1>
+  <p>Procedimentos do setor</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Pedido de Compras</h2>
+    <ul class="subitems">
+      <li><a href="#">ACHE</a></li>
+      <li><a href="#">CHIESI</a></li>
+    </ul>
   </div>
 
-  <div class="container">
-
-    <!-- Pedido de Compras -->
-    <div class="card">
-      <h2>Pedido de Compras</h2>
-      <ul class="subitems">
-        <li><a href="pedido_compras_ache.html">ACHE</a></li>
-        <li><a href="pedido_compras_chiesi.html">CHIESI</a></li>
-      </ul>
-    </div>
-
-    <!-- Envio de Relatório a Fornecedores -->
-    <div class="card">
-      <h2>Envio de Relatório a Fornecedores</h2>
-      <ul class="subitems">
-        <li><a href="relatorio_camber.html">CAMBER</a></li>
-        <li><a href="relatorio_chiesi.html">CHIESI</a></li>
-        <li><a href="relatorio_farmarin.html">FARMARIN</a></li>
-        <li><a href="relatorio_hypera.html">HYPERA</a></li>
-        <li><a href="relatorio_teuto.html">TEUTO</a></li>
-        <li><a href="relatorio_zydus.html">ZYDUS</a></li>
-      </ul>
-    </div>
-
-    <!-- Reservas -->
-    <div class="card">
-      <h2>Reservas</h2>
-      <ul class="subitems">
-        <li><a href="reservas_validade_powerbi.html">Conferir Planilha de validade curta Power BI</a></li>
-        <li><a href="reserva_protheus.html">Reserva Protheus</a></li>
-      </ul>
-    </div>
-
-    <!-- Transferência entre filiais -->
-    <div class="card">
-      <h2>Transferência entre filiais</h2>
-      <ul class="subitems">
-        <li><a href="transferencia_filiais.html">Ir para procedimento</a></li>
-      </ul>
-    </div>
-
-    <!-- Controle de reservas em pedidos de venda -->
-    <div class="card">
-      <h2>Controle de reservas em pedidos de venda</h2>
-      <ul class="subitems">
-        <li><a href="controle_reservas_pedidos.html">Ir para procedimento</a></li>
-      </ul>
-    </div>
-
-    <!-- DE/PARA -->
-    <div class="card">
-      <h2>DE/PARA</h2>
-      <ul class="subitems">
-        <li><a href="depara_novos.html">Novos de para</a></li>
-        <li><a href="depara_ajuste.html">Ajuste de para</a></li>
-        <li><a href="depara_alterar_preco.html">Alterar preço</a></li>
-        <li><a href="depara_alterar_descricao.html">Alterar descrição</a></li>
-      </ul>
-    </div>
-
-    <!-- Emissão de Relatório IQVIA / CLOSE-UP -->
-    <div class="card">
-      <h2>Emissão de Relatório IQVIA / CLOSE-UP</h2>
-      <ul class="subitems">
-        <li><a href="emissao_relatorio_iqvia.html">Ir para procedimento</a></li>
-      </ul>
-    </div>
-
-    <!-- Botão voltar -->
-    <a href="index.html" class="back-btn">Voltar</a>
-
+  <div class="card">
+    <h2>Relatórios</h2>
+    <ul class="subitems">
+      <li><a href="#">CAMBER</a></li>
+      <li><a href="#">HYPERA</a></li>
+      <li><a href="#">TEUTO</a></li>
+    </ul>
   </div>
 
-  <script>
-    // Expandir subitens ao clicar
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const sub = card.querySelector('.subitems');
-        if(sub){
-          if(sub.style.maxHeight){
-            sub.style.maxHeight = null;
-          } else {
-            sub.style.maxHeight = sub.scrollHeight + "px";
-          }
-        }
-      });
-    });
+  <div class="card">
+    <h2>Reservas</h2>
+    <ul class="subitems">
+      <li><a href="#">Power BI</a></li>
+      <li><a href="#">Protheus</a></li>
+    </ul>
+  </div>
 
-    // Partículas animadas
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  <div class="card">
+    <h2>DE / PARA</h2>
+    <ul class="subitems">
+      <li><a href="#">Novos</a></li>
+      <li><a href="#">Ajustes</a></li>
+      <li><a href="#">Preço</a></li>
+      <li><a href="#">Descrição</a></li>
+    </ul>
+  </div>
 
-    const particlesArray = [];
-    const colors = ['#00ffea','#0066ff','#00ffaa','#00ffff'];
+  <div class="back">
+    <a href="#">Voltar</a>
+  </div>
 
-    class Particle {
-      constructor(){
-        this.x = Math.random()*canvas.width;
-        this.y = Math.random()*canvas.height;
-        this.size = Math.random()*3 +1;
-        this.speedX = Math.random()*1 -0.5;
-        this.speedY = Math.random()*1 -0.5;
-        this.color = colors[Math.floor(Math.random()*colors.length)];
-      }
-      update(){
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x <0 || this.x>canvas.width) this.speedX=-this.speedX;
-        if(this.y <0 || this.y>canvas.height) this.speedY=-this.speedY;
-      }
-      draw(){
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
+</div>
 
-    function init(){
-      for(let i=0;i<120;i++){
-        particlesArray.push(new Particle());
-      }
-    }
+<script>
+// EXPAND
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const ul=card.querySelector('.subitems');
+    ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight+'px';
+  });
+});
 
-    function animate(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
+// REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('show');
+  });
+},{threshold:.2});
 
-    init();
-    animate();
+document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 
-    window.addEventListener('resize',()=>{
-      canvas.width=window.innerWidth;
-      canvas.height=window.innerHeight;
-      particlesArray.length=0;
-      init();
-    });
-  </script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<150;i++){
+  p.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    vx:(Math.random()-.5)*.6,
+    vy:(Math.random()-.5)*.6
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+onresize=()=>{
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+};
+</script>
+
 </body>
 </html>
