@@ -8,10 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;font-family:'Inter',sans-serif;}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
+  font-family:'Inter',sans-serif;
   background:radial-gradient(circle at top,#0f2027,#000);
   color:#fff;
 }
@@ -22,13 +21,13 @@ canvas{position:fixed;inset:0;z-index:0}
 /* HEADER */
 header{
   text-align:center;
-  padding:60px 20px 30px;
+  padding:60px 20px 40px;
   position:relative;
   z-index:2;
 }
 header h1{
   font-family:'Orbitron';
-  font-size:2.6rem;
+  font-size:2.8rem;
   color:#00ffee;
   text-shadow:0 0 30px #00ffee;
 }
@@ -41,51 +40,43 @@ header p{
 /* CONTAINER */
 .container{
   max-width:1100px;
-  margin:0 auto 60px;
+  margin:0 auto 80px;
   padding:20px;
   position:relative;
   z-index:2;
 }
 
-/* CARD */
-.card{
+/* SECTION */
+.section{
   background:rgba(255,255,255,.05);
   backdrop-filter:blur(16px);
-  border-radius:20px;
-  padding:30px;
-  border:1px solid rgba(0,255,234,.2);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
   box-shadow:0 0 40px rgba(0,255,234,.15);
-  margin-bottom:30px;
-  animation:fadeUp .8s ease forwards;
-  opacity:0;
+  margin-bottom:35px;
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* TITULOS */
-.card h2{
+/* TITLES */
+.section h2{
   font-family:'Orbitron';
   color:#00ffee;
-  margin-bottom:10px;
+  margin-bottom:14px;
 }
-.card h3{
-  margin-top:20px;
+.section h3{
+  margin-top:18px;
   color:#00ffee;
 }
-.card p{
-  opacity:.85;
-  line-height:1.6;
-}
 
-/* LISTA */
+/* TEXT */
+.section p{line-height:1.7;opacity:.9}
+
+/* LIST */
 ul{margin-top:10px}
 li{
   list-style:none;
   margin:8px 0;
-  padding-left:18px;
+  padding-left:20px;
   position:relative;
 }
 li::before{
@@ -95,33 +86,31 @@ li::before{
   color:#00ffee;
 }
 
-/* INFO BOX */
-.info{
-  margin-top:15px;
-  padding:15px 20px;
+/* BOXES */
+.tip{
+  margin-top:16px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.1);
   border-left:4px solid #00ffee;
-  background:rgba(0,255,234,.08);
-  border-radius:10px;
+  border-radius:12px;
 }
-
-/* ALERTA */
 .alert{
-  margin-top:15px;
-  padding:15px 20px;
+  margin-top:16px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
   border-left:4px solid #ffcc00;
-  background:rgba(255,204,0,.1);
-  border-radius:10px;
+  border-radius:12px;
 }
 
-/* BOTÕES */
+/* ACTIONS */
 .actions{
-  margin-top:40px;
   display:flex;
   gap:20px;
   flex-wrap:wrap;
+  margin-top:40px;
 }
 .actions a{
-  padding:14px 36px;
+  padding:14px 40px;
   border-radius:40px;
   background:linear-gradient(90deg,#00ffee,#0066ff);
   color:#000;
@@ -148,99 +137,100 @@ li::before{
 
 <div class="container">
 
-  <!-- ETAPA 1 -->
-  <div class="card">
-    <h2>🏷️ ACHE — Recebimento da Planilha</h2>
-
-    <h3>🎯 Objetivo</h3>
+  <!-- CAPA -->
+  <div class="section">
+    <h2>Objetivo</h2>
     <p>
-      Receber e iniciar o tratamento da planilha de pedido de compras enviada
-      pelo fornecedor ou responsável interno.
+      Este procedimento descreve o passo a passo para análise, conferência e
+      acompanhamento dos pedidos de compras do fornecedor <strong>ACHE</strong>
+      dentro do setor de Pricing.
     </p>
 
-    <h3>📥 Procedimento</h3>
+    <h2 style="margin-top:30px">Quando utilizar</h2>
     <ul>
-      <li>Receber a planilha de pedido de compras enviada pelo fornecedor ACHE ou pelo responsável interno (Vilmar)</li>
-      <li>Acessar o sistema Protheus</li>
-      <li>No menu inicial, selecionar o módulo <strong>SIGAMDI</strong>, utilizando o ambiente <strong>Produção</strong></li>
+      <li>Pedidos novos recebidos do fornecedor</li>
+      <li>Ajustes de preço ou quantidade</li>
+      <li>Validação antes de envio para ERP</li>
+      <li>Conferência de divergências comerciais</li>
     </ul>
 
-    <div class="info">
-      💡 <strong>Dica:</strong> sempre valide se a planilha recebida corresponde à política vigente antes de iniciar qualquer lançamento no sistema.
+    <h2 style="margin-top:30px">Responsável</h2>
+    <p>Equipe de Pricing</p>
+  </div>
+
+  <!-- ETAPA 1 -->
+  <div class="section">
+    <h2>Etapa 1 — Recebimento da Planilha</h2>
+
+    <h3>Objetivo</h3>
+    <p>Receber e iniciar o tratamento da planilha de pedido de compras.</p>
+
+    <h3>Procedimento</h3>
+    <ul>
+      <li>Receber a planilha enviada pelo fornecedor ACHE ou pelo responsável interno (Vilmar)</li>
+      <li>Acessar o sistema Protheus</li>
+      <li>No menu inicial, selecionar o módulo <strong>SIGAMDI</strong> em ambiente <strong>Produção</strong></li>
+    </ul>
+
+    <div class="tip">
+      💡 Sempre valide se a planilha corresponde à política vigente antes de iniciar o lançamento.
     </div>
   </div>
 
   <!-- ETAPA 2 -->
-  <div class="card">
-    <h2>🔐 Login no Protheus e Criação do Pedido</h2>
+  <div class="section">
+    <h2>Etapa 2 — Login no Protheus e Criação do Pedido</h2>
 
-    <h3>🎯 Objetivo</h3>
-    <p>Realizar o login no sistema e iniciar a criação do pedido de compras conforme a planilha recebida.</p>
-
-    <h3>📥 Procedimento</h3>
     <ul>
       <li>Informar login e senha e confirmar pressionando Enter</li>
-      <li>Conferir se a filial corresponde à filial indicada na planilha</li>
-      <li>Selecionar o Ambiente de Compras (2) e clicar em Entrar</li>
-      <li>Acessar o menu: <strong>Atualizações &gt; Pedidos &gt; Pedidos de Compra</strong></li>
-      <li>Clicar em Confirmar para validar os dados</li>
-      <li>Clicar em Incluir para criar um novo Pedido de Compra</li>
+      <li>Conferir se a filial corresponde à informada na planilha</li>
+      <li>Selecionar o Ambiente de Compras (2)</li>
+      <li>Acessar: <strong>Atualizações &gt; Pedidos &gt; Pedidos de Compra</strong></li>
+      <li>Clicar em Confirmar</li>
+      <li>Clicar em Incluir para criar o pedido</li>
     </ul>
   </div>
 
   <!-- ETAPA 3 -->
-  <div class="card">
-    <h2>🏭 Etapa 3 — Seleção do Fornecedor</h2>
+  <div class="section">
+    <h2>Etapa 3 — Seleção do Fornecedor</h2>
 
-    <h3>🎯 Objetivo</h3>
-    <p>Selecionar corretamente o fornecedor no sistema.</p>
-
-    <h3>📥 Procedimento</h3>
     <ul>
-      <li>No campo Fornecedor, clicar no ícone da lupa</li>
-      <li>Clicar no ícone de três linhas e selecionar a opção <strong>Nome</strong></li>
-      <li>Buscar o fornecedor cadastrado como <strong>LABOFARMA</strong></li>
-      <li>Clicar em Pesquisar</li>
-      <li>Selecionar o registro com <strong>loja 17</strong> e clicar em OK</li>
+      <li>Clicar na lupa do campo Fornecedor</li>
+      <li>Alterar filtro para <strong>Nome</strong></li>
+      <li>Pesquisar por <strong>LABOFARMA</strong></li>
+      <li>Selecionar o registro da <strong>loja 17</strong></li>
     </ul>
 
     <div class="alert">
-      ⚠️ <strong>Atenção:</strong> sempre confirme a loja correta antes de prosseguir.
+      ⚠️ Sempre confirme a loja correta antes de prosseguir.
     </div>
   </div>
 
   <!-- ETAPA 4 -->
-  <div class="card">
-    <h2>📦 Etapa 4 — Inclusão dos Produtos</h2>
+  <div class="section">
+    <h2>Etapa 4 — Inclusão dos Produtos</h2>
 
-    <h3>🎯 Objetivo</h3>
-    <p>Inserir corretamente os produtos conforme a planilha.</p>
-
-    <h3>📥 Procedimento</h3>
     <ul>
-      <li>No campo Cond., informar o código <strong>060</strong></li>
-      <li>No campo Produto, colar o código da planilha e pressionar TAB</li>
+      <li>No campo Cond., informar <strong>060</strong></li>
+      <li>Inserir o código do produto conforme planilha</li>
       <li>Se não localizar, acrescentar <strong>x1</strong> ao final da descrição</li>
-      <li>Verificar se o Armazém está como <strong>01</strong></li>
-      <li>Informar a quantidade de caixas conforme planilha</li>
-      <li>Preencher o campo <strong>% Desconto Item</strong></li>
+      <li>Verificar Armazém <strong>01</strong></li>
+      <li>Informar quantidade de caixas</li>
+      <li>Preencher <strong>% Desconto Item</strong></li>
       <li>Pressionar TAB e clicar em Salvar</li>
     </ul>
   </div>
 
   <!-- ETAPA 5 -->
-  <div class="card">
-    <h2>🧾 Etapa 5 — Finalização e Impressão</h2>
+  <div class="section">
+    <h2>Etapa 5 — Finalização e Impressão</h2>
 
-    <h3>🎯 Objetivo</h3>
-    <p>Finalizar o pedido, gerar o número correto e salvar o documento.</p>
-
-    <h3>📥 Procedimento</h3>
     <ul>
-      <li>Copiar o número do pedido gerado e acrescentar um zero à esquerda</li>
-      <li>Acessar: Outras Ações &gt; Imprimir</li>
-      <li>Informar o número do pedido nos dois campos e clicar em OK</li>
-      <li>Salvar o arquivo no diretório: <strong>Z:\Vilmar\Pedidos de Compras</strong></li>
+      <li>Copiar o número do pedido e acrescentar um zero à esquerda</li>
+      <li>Acessar: <strong>Outras Ações &gt; Imprimir</strong></li>
+      <li>Informar o número do pedido nos dois campos</li>
+      <li>Salvar em: <strong>Z:\Vilmar\Pedidos de Compras</strong></li>
     </ul>
   </div>
 
@@ -254,7 +244,7 @@ li::before{
 const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
 canvas.width=innerWidth;canvas.height=innerHeight;
 const p=[];
-for(let i=0;i<140;i++){
+for(let i=0;i<130;i++){
   p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
 }
 function anim(){
@@ -269,7 +259,7 @@ function anim(){
   requestAnimationFrame(anim);
 }
 anim();
-onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight;}
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
 </script>
 
 </body>
