@@ -69,11 +69,6 @@ header p{
   box-shadow:0 40px 80px rgba(0,255,234,.25);
 }
 
-.card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
 .card h2{
   font-family:'Orbitron';
   font-size:1.4rem;
@@ -100,12 +95,18 @@ header p{
   padding:8px 10px;
   border-radius:8px;
   transition:.3s;
+  cursor:pointer;
 }
 
 .subitems a:hover{
   background:rgba(0,255,234,.15);
   color:#00ffee;
   transform:translateX(6px);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
 </style>
 </head>
@@ -134,9 +135,9 @@ header p{
   <div class="card">
     <h2>Relatórios</h2>
     <ul class="subitems">
-      <li><a href="relatorio_camber.html">CAMBER</a></li>
-      <li><a href="relatorio_hypera.html">HYPERA</a></li>
-      <li><a href="relatorio_teuto.html">TEUTO</a></li>
+      <li><a href="relatorios_camber.html">CAMBER</a></li>
+      <li><a href="relatorios_hypera.html">HYPERA</a></li>
+      <li><a href="relatorios_teuto.html">TEUTO</a></li>
     </ul>
   </div>
 
@@ -145,11 +146,11 @@ header p{
     <h2>Reservas</h2>
     <ul class="subitems">
       <li><a href="reservas_powerbi.html">Power BI</a></li>
-      <li><a href="reserva_protheus.html">Protheus</a></li>
+      <li><a href="reservas_protheus.html">Protheus</a></li>
     </ul>
   </div>
 
-  <!-- DE PARA -->
+  <!-- DE / PARA -->
   <div class="card">
     <h2>DE / PARA</h2>
     <ul class="subitems">
@@ -163,30 +164,41 @@ header p{
 </div>
 
 <script>
-// EXPANDIR / FECHAR CARD (sem quebrar links)
+// EXPANDIR / FECHAR CARD (SEM ATRAPALHAR LINKS)
 document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('click',e=>{
-    if(e.target.tagName.toLowerCase()==='a') return;
+  card.addEventListener('click', e=>{
+    if (e.target.closest('a')) return;
+
     const ul = card.querySelector('.subitems');
-    ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight + 'px';
+    ul.style.maxHeight = ul.style.maxHeight
+      ? null
+      : ul.scrollHeight + 'px';
   });
 });
 
-// REVEAL
-const observer=new IntersectionObserver(entries=>{
+// ANIMAÇÃO DE ENTRADA
+const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('show');
+    if(e.isIntersecting) e.target.classList.add('show');
   });
 },{threshold:.2});
+
 document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 
 // PARTICLES
-const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
-canvas.width=innerWidth;canvas.height=innerHeight;
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
 
-const p=[];
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+addEventListener('resize',resize);
+
+const particles=[];
 for(let i=0;i<120;i++){
-  p.push({
+  particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
     r:Math.random()*2+1,
@@ -195,25 +207,21 @@ for(let i=0;i<120;i++){
   });
 }
 
-function draw(){
+function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle='#00ffee';
-  p.forEach(a=>{
-    a.x+=a.vx;a.y+=a.vy;
-    if(a.x<0||a.x>canvas.width)a.vx*=-1;
-    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+  particles.forEach(p=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+    if(p.x<0||p.x>canvas.width) p.vx*=-1;
+    if(p.y<0||p.y>canvas.height) p.vy*=-1;
     ctx.beginPath();
-    ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
   });
-  requestAnimationFrame(draw);
+  requestAnimationFrame(animate);
 }
-draw();
-
-onresize=()=>{
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
-};
+animate();
 </script>
 
 </body>
