@@ -1,18 +1,3 @@
-Aqui está o **menu.html completo** já com **TRANSFERÊNCIAS** adicionado (e eu corrigi o que estava errado: você tinha um card duplicado “DE / PARA” e um “TRANSFERENCIA” com título errado).
-
-✅ Agora fica:
-
-* Pedido de Compras
-* Relatórios
-* Reservas
-* **Transferências**
-* DE / PARA
-
-> Coloquei os links de Transferências como placeholders (você troca quando criar as páginas):
-
-* `transferencias_filiais.html`
-* `controle_reservas_pedidos.html`
-
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -200,9 +185,10 @@ header p{
 </div>
 
 <script>
-// EXPANDIR CARD
+// EXPANDIR CARD (sem atrapalhar clique em links)
 document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('click',()=>{
+  card.addEventListener('click',(e)=>{
+    if(e.target.closest('a')) return;
     const ul=card.querySelector('.subitems');
     ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight+'px';
   });
@@ -255,5 +241,3 @@ onresize=()=>{
 </body>
 </html>
 ```
-
-Se você já tiver os nomes reais dos arquivos de transferências, me manda que eu ajusto os `href` certinho.
