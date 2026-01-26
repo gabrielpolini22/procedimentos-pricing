@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emissão de Relatório • IQVIA / CLOSE-UP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+.path{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>📊 IQVIA / CLOSE-UP</h1>
+  <p>Emissão de Relatório • Protheus + FileZilla</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>🎯 Objetivo</h2>
+    <p>
+      Descrever o passo a passo para emissão do relatório IQVIA / Close-Up no sistema Protheus,
+      garantindo padronização e correta execução do processo.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>📌 Sistema Utilizado</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Acessar o Protheus (TOTVS)</span></label>
+      <label><input type="checkbox"><span>Realizar login com usuário e senha</span></label>
+      <label><input type="checkbox"><span>Selecionar o Ambiente 5</span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Geração de Arquivo IMS</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No menu principal, clicar em <strong>Relatórios</strong></span></label>
+      <label><input type="checkbox"><span>Acessar a opção <strong>Customizações</strong></span></label>
+      <label><input type="checkbox"><span>Localizar o processo <strong>Arquivo IMS</strong></span></label>
+      <label><input type="checkbox"><span>Ao clicar em Arquivo IMS, aguardar abrir a janela de geração</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ <strong>Observação:</strong> o relatório deve ser emitido sempre considerando o <strong>último dia de faturamento</strong>.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Geração do Arquivo IQVIA</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>De volta ao Protheus, acessar a opção <strong>Gerar Arquivo IQVIA</strong></span></label>
+      <label><input type="checkbox"><span>Informar a data correspondente ao <strong>último faturamento</strong></span></label>
+      <label><input type="checkbox"><span>Abrir a opção <strong>Estoque IQVIA (novo)</strong></span></label>
+      <label><input type="checkbox"><span>Retornar e acessar novamente <strong>Gerar Arquivo IQVIA</strong></span></label>
+      <label><input type="checkbox"><span>Confirmar novamente a data do <strong>último faturamento</strong></span></label>
+      <label><input type="checkbox"><span>No campo <strong>Data base</strong>, informar <strong>1 dia após</strong> o último faturamento (ex.: sexta → sábado)</span></label>
+    </div>
+
+    <div class="note">
+      💡 Os relatórios serão salvos no caminho:
+      <div class="path">C:\TEMP</div>
+    </div>
+
+    <div class="checklist" style="margin-top:10px">
+      <label><input type="checkbox"><span>Após aparecer a mensagem final do Protheus, clicar em <strong>Fechar</strong></span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 FileZilla • Envio dos Arquivos</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o programa <strong>FileZilla</strong></span></label>
+      <label><input type="checkbox"><span>No FileZilla, selecionar o servidor <strong>CLOSE-UP</strong></span></label>
+      <label><input type="checkbox"><span>Localizar e coletar os relatórios gerados na pasta <strong>temp</strong></span></label>
+      <label><input type="checkbox"><span>Arrastar <strong>somente</strong> os arquivos contidos na pasta <strong>temp</strong> para o FileZilla</span></label>
+      <label><input type="checkbox"><span>Selecionar o destinatário <strong>IMSHEALTH (IQVIA)</strong></span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 IMSHEALTH • Gerenciamento de Arquivos</h2>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No ambiente IMSHEALTH, copiar todos os arquivos transferidos anteriormente</span></label>
+      <label><input type="checkbox"><span>Adicionar também o arquivo localizado na pasta <strong>IMS</strong></span></label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📌 Diretório IMS – CLOSE-UP</h2>
+    <p>Local de armazenamento oficial dos relatórios:</p>
+    <div class="path">C:\Users\gabriel.polini\SULMEDIC COMERCIAL\smd.inteligencia - Documentos\General\09 - Relatórios\01 - IMS - CLOSE-UP</div>
+
+    <div class="checklist" style="margin-top:14px">
+      <label><input type="checkbox"><span>Verificar a estrutura de pastas existente no local</span></label>
+      <label><input type="checkbox"><span>Selecionar a pasta do mês de referência (ex.: “03 – MARÇO”, “04 – ABRIL”, “05 – MAIO”...)</span></label>
+    </div>
+
+    <div class="checklist" style="margin-top:10px">
+      <label><input type="checkbox"><span>Criar uma pasta diária com o dia da execução (somente números: “05”, “12”, “28”...)</span></label>
+      <label><input type="checkbox"><span>Selecionar todos os arquivos gerados no processo</span></label>
+      <label><input type="checkbox"><span>Mover os arquivos para a pasta criada com o dia correspondente</span></label>
+      <label><input type="checkbox"><span>Confirmar se todos os arquivos foram movidos corretamente</span></label>
+      <label><input type="checkbox"><span>Garantir que não existam arquivos soltos fora da pasta diária</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('iqvia_closeup_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('iqvia_closeup_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('iqvia_closeup_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
