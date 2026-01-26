@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Procedimentos • Pricing</title>
+<title>Pricing • Procedimentos</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -13,7 +13,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;}
 
 body{
   background: radial-gradient(circle at top, #0f2027, #000);
-  overflow-x:hidden;
+  overflow:hidden;
   color:#fff;
 }
 
@@ -23,168 +23,113 @@ canvas{
   z-index:0;
 }
 
-header{
-  text-align:center;
-  padding:60px 20px 20px;
+.main{
   position:relative;
   z-index:2;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
-header h1{
+
+.hero{
+  text-align:center;
+  max-width:800px;
+  width:100%;
+  padding:60px 30px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(0,255,234,.18);
+  backdrop-filter:blur(16px);
+  box-shadow:0 0 50px rgba(0,255,234,.12);
+  animation:fadeUp .8s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.hero h1{
   font-family:'Orbitron';
-  font-size:3rem;
+  font-size:4rem;
   color:#00ffee;
-  text-shadow:0 0 30px #00ffee;
-}
-header p{
-  opacity:.7;
-  margin-top:10px;
+  text-shadow:0 0 35px #00ffee;
   letter-spacing:2px;
 }
 
-.container{
-  max-width:1200px;
-  margin:50px auto;
-  padding:20px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-  position:relative;
-  z-index:2;
+.hero p{
+  margin-top:14px;
+  opacity:.75;
+  letter-spacing:2px;
+  line-height:1.6;
 }
 
-.card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(15px);
-  border-radius:20px;
-  padding:25px;
-  cursor:pointer;
-  transition:.4s ease;
-  border:1px solid rgba(0,255,234,.15);
-  opacity:0;
-  transform:translateY(40px);
+.cta{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 40px 80px rgba(0,255,234,.25);
-}
-
-.card h2{
-  font-family:'Orbitron';
-  font-size:1.4rem;
-  color:#00ffee;
-  text-shadow:0 0 15px #00ffee;
-}
-
-.subitems{
-  margin-top:15px;
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .6s ease;
-}
-
-.subitems li{
-  list-style:none;
-  margin:8px 0;
-}
-
-.subitems a{
-  color:#ccc;
+.cta a{
+  display:inline-block;
+  padding:16px 44px;
+  border-radius:44px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:700;
   text-decoration:none;
-  display:block;
-  padding:8px 10px;
-  border-radius:8px;
-  transition:.3s;
-  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.65);
+  transition:.35s;
 }
 
-.subitems a:hover{
-  background:rgba(0,255,234,.15);
-  color:#00ffee;
-  transform:translateX(6px);
+.cta a:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 65px rgba(0,255,234,1);
 }
 
-.card.show{
-  opacity:1;
-  transform:translateY(0);
+.badge{
+  margin:22px auto 0;
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(0,255,234,.08);
+  border:1px solid rgba(0,255,234,.18);
+  color:#bffdf7;
+  font-size:.9rem;
+}
+
+@media(max-width:640px){
+  .hero{padding:44px 20px;}
+  .hero h1{font-size:2.8rem;}
 }
 </style>
 </head>
 
 <body>
-
 <canvas id="bg"></canvas>
 
-<header>
-  <h1>Pricing</h1>
-  <p>Procedimentos do setor</p>
-</header>
+<div class="main">
+  <div class="hero">
+    <h1>PRICING</h1>
+    <div class="badge">⚡ Procedimentos do setor</div>
+    <p>
+      Central de procedimentos operacionais para atividades do dia a dia.<br>
+      Clique abaixo para acessar o menu completo.
+    </p>
 
-<div class="container">
-
-  <!-- PEDIDO DE COMPRAS -->
-  <div class="card">
-    <h2>Pedido de Compras</h2>
-    <ul class="subitems">
-      <li><a href="pedido_compras_ache.html">ACHE</a></li>
-      <li><a href="pedido_compras_chiesi.html">CHIESI</a></li>
-    </ul>
+    <div class="cta">
+      <a href="menu.html">Entrar no Menu</a>
+    </div>
   </div>
-
-  <!-- RELATÓRIOS -->
-  <div class="card">
-    <h2>Relatórios</h2>
-    <ul class="subitems">
-      <li><a href="relatorios_camber.html">CAMBER</a></li>
-      <li><a href="relatorios_hypera.html">HYPERA</a></li>
-      <li><a href="relatorios_teuto.html">TEUTO</a></li>
-    </ul>
-  </div>
-
-  <!-- RESERVAS -->
-  <div class="card">
-    <h2>Reservas</h2>
-    <ul class="subitems">
-      <li><a href="reservas_powerbi.html">Power BI</a></li>
-      <li><a href="reservas_protheus.html">Protheus</a></li>
-    </ul>
-  </div>
-
-  <!-- DE / PARA -->
-  <div class="card">
-    <h2>DE / PARA</h2>
-    <ul class="subitems">
-      <li><a href="depara_novos.html">Novos</a></li>
-      <li><a href="depara_ajustes.html">Ajustes</a></li>
-      <li><a href="depara_preco.html">Preço</a></li>
-      <li><a href="depara_descricao.html">Descrição</a></li>
-    </ul>
-  </div>
-
 </div>
 
 <script>
-// EXPANDIR / FECHAR CARD (SEM ATRAPALHAR LINKS)
-document.querySelectorAll('.card').forEach(card=>{
-  card.addEventListener('click', e=>{
-    if (e.target.closest('a')) return;
-
-    const ul = card.querySelector('.subitems');
-    ul.style.maxHeight = ul.style.maxHeight
-      ? null
-      : ul.scrollHeight + 'px';
-  });
-});
-
-// ANIMAÇÃO DE ENTRADA
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('show');
-  });
-},{threshold:.2});
-
-document.querySelectorAll('.card').forEach(c=>observer.observe(c));
-
 // PARTICLES
 const canvas=document.getElementById('bg');
 const ctx=canvas.getContext('2d');
@@ -197,7 +142,7 @@ resize();
 addEventListener('resize',resize);
 
 const particles=[];
-for(let i=0;i<120;i++){
+for(let i=0;i<140;i++){
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
