@@ -1,172 +1,217 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Procedimentos Pricing</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procedimentos • Pricing</title>
 
-    body, html {
-      height: 100%;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
-      color: #fff;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    /* Container principal */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:'Inter',sans-serif;}
 
-    /* Efeito de partículas */
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
+body{
+  background: radial-gradient(circle at top, #0f2027, #000);
+  overflow-x:hidden;
+  color:#fff;
+}
 
-    /* Títulos animados */
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 4rem;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, #00ffea, #0066ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInUp 2s ease forwards;
-    }
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
 
-    h2 {
-      font-size: 1.5rem;
-      color: #ccc;
-      margin-top: 20px;
-      animation: fadeInUp 2s ease 0.5s forwards;
-      opacity: 0;
-    }
+header{
+  text-align:center;
+  padding:60px 20px 20px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  font-size:3rem;
+  color:#00ffee;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{
+  opacity:.7;
+  margin-top:10px;
+  letter-spacing:2px;
+}
 
-    /* Botão estiloso */
-    .btn {
-      margin-top: 40px;
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      color: #fff;
-      background: linear-gradient(90deg, #00ffea, #0066ff);
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: 0 0 20px rgba(0,255,234,0.5);
-      opacity: 0;
-      animation: fadeInUp 2s ease 1s forwards;
-    }
+.container{
+  max-width:1200px;
+  margin:50px auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  position:relative;
+  z-index:2;
+}
 
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px rgba(0,255,234,0.8);
-    }
+.card{
+  position:relative;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border-radius:20px;
+  padding:25px;
+  cursor:pointer;
+  transition:.4s ease;
+  border:1px solid rgba(0,255,234,.15);
+}
 
-    /* Animação */
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 40px 80px rgba(0,255,234,.25);
+}
 
-    /* Partículas simples */
-    canvas {
-      display: block;
-      background: transparent;
-    }
-  </style>
+.card h2{
+  font-family:'Orbitron';
+  font-size:1.4rem;
+  color:#00ffee;
+  text-shadow:0 0 15px #00ffee;
+}
+
+.subitems{
+  margin-top:15px;
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .6s ease;
+}
+
+.subitems li{
+  list-style:none;
+  margin:8px 0;
+}
+
+.subitems a{
+  color:#ccc;
+  text-decoration:none;
+  display:block;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.subitems a:hover{
+  background:rgba(0,255,234,.15);
+  color:#00ffee;
+  transform:translateX(6px);
+}
+
+.card{
+  opacity:0;
+  transform:translateY(40px);
+}
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
 </head>
+
 <body>
-  <div class="particles">
-    <canvas id="particle-canvas"></canvas>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>Pricing</h1>
+  <p>Procedimentos do setor</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Pedido de Compras</h2>
+    <ul class="subitems">
+      <li>
+        <a href="pedido_compras_ache.html" onclick="event.stopPropagation()">
+          ACHE
+        </a>
+      </li>
+      <li><a href="#" onclick="event.stopPropagation()">CHIESI</a></li>
+    </ul>
   </div>
 
-  <div class="hero">
-    <h1>Bem-vindo ao Pricing</h1>
-    <h2>Procedimentos modernos para sua equipe</h2>
-    <a href="menu.html" class="btn">Começar</a>
+  <div class="card">
+    <h2>Relatórios</h2>
+    <ul class="subitems">
+      <li><a href="#" onclick="event.stopPropagation()">CAMBER</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">HYPERA</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">TEUTO</a></li>
+    </ul>
   </div>
 
-  <script>
-    // Partículas animadas
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  <div class="card">
+    <h2>Reservas</h2>
+    <ul class="subitems">
+      <li><a href="#" onclick="event.stopPropagation()">Power BI</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">Protheus</a></li>
+    </ul>
+  </div>
 
-    const particlesArray = [];
-    const colors = ['#00ffea','#0066ff','#00ffaa','#00ffff'];
+  <div class="card">
+    <h2>DE / PARA</h2>
+    <ul class="subitems">
+      <li><a href="#" onclick="event.stopPropagation()">Novos</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">Ajustes</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">Preço</a></li>
+      <li><a href="#" onclick="event.stopPropagation()">Descrição</a></li>
+    </ul>
+  </div>
 
-    class Particle {
-      constructor(){
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-      }
-      update(){
-        this.x += this.speedX;
-        this.y += this.speedY;
+</div>
 
-        if(this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
-        if(this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
-      }
-      draw(){
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-        ctx.fill();
-      }
-    }
+<script>
+// EXPANDIR CARD
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const ul=card.querySelector('.subitems');
+    ul.style.maxHeight = ul.style.maxHeight ? null : ul.scrollHeight+'px';
+  });
+});
 
-    function init(){
-      for(let i=0;i<100;i++){
-        particlesArray.push(new Particle());
-      }
-    }
+// REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('show');
+  });
+},{threshold:.2});
+document.querySelectorAll('.card').forEach(c=>observer.observe(c));
 
-    function animate(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
 
-    init();
-    animate();
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+1,
+    vx:(Math.random()-.5)*.6,
+    vy:(Math.random()-.5)*.6
+  });
+}
 
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      particlesArray.length = 0;
-      init();
-    });
-  </script>
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(a.x,a.y,a.r,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
 </body>
 </html>
