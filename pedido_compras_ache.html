@@ -14,8 +14,6 @@ body{
   background:radial-gradient(circle at top,#0f2027,#000);
   color:#fff;
 }
-
-/* CANVAS */
 canvas{position:fixed;inset:0;z-index:0}
 
 /* HEADER */
@@ -27,20 +25,16 @@ header{
 }
 header h1{
   font-family:'Orbitron';
-  font-size:2.8rem;
   color:#00ffee;
+  font-size:2.8rem;
   text-shadow:0 0 30px #00ffee;
 }
-header p{
-  margin-top:10px;
-  opacity:.7;
-  letter-spacing:2px;
-}
+header p{opacity:.7}
 
 /* CONTAINER */
 .container{
   max-width:1100px;
-  margin:0 auto 80px;
+  margin:0 auto 100px;
   padding:20px;
   position:relative;
   z-index:2;
@@ -54,48 +48,53 @@ header p{
   padding:32px;
   border:1px solid rgba(0,255,234,.25);
   box-shadow:0 0 40px rgba(0,255,234,.15);
-  margin-bottom:35px;
+  margin-bottom:40px;
 }
 
 /* TITLES */
 .section h2{
   font-family:'Orbitron';
   color:#00ffee;
-  margin-bottom:14px;
-}
-.section h3{
-  margin-top:18px;
-  color:#00ffee;
+  margin-bottom:16px;
 }
 
-/* TEXT */
-.section p{line-height:1.7;opacity:.9}
-
-/* LIST */
-ul{margin-top:10px}
-li{
-  list-style:none;
-  margin:8px 0;
-  padding-left:20px;
-  position:relative;
+/* CHECKLIST */
+.checklist{
+  margin-top:10px;
 }
-li::before{
-  content:'✦';
-  position:absolute;
-  left:0;
-  color:#00ffee;
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+  transition:.3s;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;
+  height:18px;
+  margin-top:3px;
+}
+.checklist span{
+  line-height:1.6;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+  opacity:.9;
 }
 
 /* BOXES */
 .tip{
-  margin-top:16px;
+  margin-top:18px;
   padding:16px 20px;
   background:rgba(0,255,234,.1);
   border-left:4px solid #00ffee;
   border-radius:12px;
 }
 .alert{
-  margin-top:16px;
+  margin-top:18px;
   padding:16px 20px;
   background:rgba(255,204,0,.12);
   border-left:4px solid #ffcc00;
@@ -109,16 +108,20 @@ li::before{
   flex-wrap:wrap;
   margin-top:40px;
 }
+.actions button,
 .actions a{
   padding:14px 40px;
   border-radius:40px;
   background:linear-gradient(90deg,#00ffee,#0066ff);
   color:#000;
   font-weight:600;
+  border:none;
+  cursor:pointer;
   text-decoration:none;
   box-shadow:0 0 30px rgba(0,255,234,.6);
   transition:.4s;
 }
+.actions button:hover,
 .actions a:hover{
   transform:scale(1.08);
   box-shadow:0 0 60px rgba(0,255,234,1);
@@ -137,114 +140,87 @@ li::before{
 
 <div class="container">
 
-  <!-- CAPA -->
-  <div class="section">
-    <h2>Objetivo</h2>
-    <p>
-      Este procedimento descreve o passo a passo para análise, conferência e
-      acompanhamento dos pedidos de compras do fornecedor <strong>ACHE</strong>
-      dentro do setor de Pricing.
-    </p>
-
-    <h2 style="margin-top:30px">Quando utilizar</h2>
-    <ul>
-      <li>Pedidos novos recebidos do fornecedor</li>
-      <li>Ajustes de preço ou quantidade</li>
-      <li>Validação antes de envio para ERP</li>
-      <li>Conferência de divergências comerciais</li>
-    </ul>
-
-    <h2 style="margin-top:30px">Responsável</h2>
-    <p>Equipe de Pricing</p>
-  </div>
-
   <!-- ETAPA 1 -->
   <div class="section">
     <h2>Etapa 1 — Recebimento da Planilha</h2>
 
-    <h3>Objetivo</h3>
-    <p>Receber e iniciar o tratamento da planilha de pedido de compras.</p>
-
-    <h3>Procedimento</h3>
-    <ul>
-      <li>Receber a planilha enviada pelo fornecedor ACHE ou pelo responsável interno (Vilmar)</li>
-      <li>Acessar o sistema Protheus</li>
-      <li>No menu inicial, selecionar o módulo <strong>SIGAMDI</strong> em ambiente <strong>Produção</strong></li>
-    </ul>
-
-    <div class="tip">
-      💡 Sempre valide se a planilha corresponde à política vigente antes de iniciar o lançamento.
+    <div class="checklist">
+      <label><input type="checkbox"><span>Receber a planilha do fornecedor ACHE ou do responsável interno (Vilmar)</span></label>
+      <label><input type="checkbox"><span>Acessar o sistema Protheus</span></label>
+      <label><input type="checkbox"><span>Selecionar o módulo SIGAMDI em ambiente Produção</span></label>
     </div>
+
+    <div class="tip">💡 Valide sempre se a planilha está de acordo com a política vigente.</div>
   </div>
 
   <!-- ETAPA 2 -->
   <div class="section">
-    <h2>Etapa 2 — Login no Protheus e Criação do Pedido</h2>
+    <h2>Etapa 2 — Login e Criação do Pedido</h2>
 
-    <ul>
-      <li>Informar login e senha e confirmar pressionando Enter</li>
-      <li>Conferir se a filial corresponde à informada na planilha</li>
-      <li>Selecionar o Ambiente de Compras (2)</li>
-      <li>Acessar: <strong>Atualizações &gt; Pedidos &gt; Pedidos de Compra</strong></li>
-      <li>Clicar em Confirmar</li>
-      <li>Clicar em Incluir para criar o pedido</li>
-    </ul>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Informar login e senha e pressionar Enter</span></label>
+      <label><input type="checkbox"><span>Conferir se a filial está correta</span></label>
+      <label><input type="checkbox"><span>Selecionar o Ambiente de Compras (2)</span></label>
+      <label><input type="checkbox"><span>Acessar Atualizações &gt; Pedidos &gt; Pedidos de Compra</span></label>
+      <label><input type="checkbox"><span>Clicar em Confirmar</span></label>
+      <label><input type="checkbox"><span>Clicar em Incluir para criar o pedido</span></label>
+    </div>
   </div>
 
   <!-- ETAPA 3 -->
   <div class="section">
     <h2>Etapa 3 — Seleção do Fornecedor</h2>
 
-    <ul>
-      <li>Clicar na lupa do campo Fornecedor</li>
-      <li>Alterar filtro para <strong>Nome</strong></li>
-      <li>Pesquisar por <strong>LABOFARMA</strong></li>
-      <li>Selecionar o registro da <strong>loja 17</strong></li>
-    </ul>
-
-    <div class="alert">
-      ⚠️ Sempre confirme a loja correta antes de prosseguir.
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar na lupa do campo Fornecedor</span></label>
+      <label><input type="checkbox"><span>Alterar filtro para Nome</span></label>
+      <label><input type="checkbox"><span>Pesquisar por LABOFARMA</span></label>
+      <label><input type="checkbox"><span>Selecionar o registro da loja 17</span></label>
     </div>
+
+    <div class="alert">⚠️ Confirme sempre a loja correta.</div>
   </div>
 
   <!-- ETAPA 4 -->
   <div class="section">
     <h2>Etapa 4 — Inclusão dos Produtos</h2>
 
-    <ul>
-      <li>No campo Cond., informar <strong>060</strong></li>
-      <li>Inserir o código do produto conforme planilha</li>
-      <li>Se não localizar, acrescentar <strong>x1</strong> ao final da descrição</li>
-      <li>Verificar Armazém <strong>01</strong></li>
-      <li>Informar quantidade de caixas</li>
-      <li>Preencher <strong>% Desconto Item</strong></li>
-      <li>Pressionar TAB e clicar em Salvar</li>
-    </ul>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Informar Condição 060</span></label>
+      <label><input type="checkbox"><span>Inserir código do produto conforme planilha</span></label>
+      <label><input type="checkbox"><span>Acrescentar x1 caso o produto não seja localizado</span></label>
+      <label><input type="checkbox"><span>Verificar Armazém 01</span></label>
+      <label><input type="checkbox"><span>Informar quantidade de caixas</span></label>
+      <label><input type="checkbox"><span>Preencher % Desconto Item</span></label>
+      <label><input type="checkbox"><span>Pressionar TAB e clicar em Salvar</span></label>
+    </div>
   </div>
 
   <!-- ETAPA 5 -->
   <div class="section">
     <h2>Etapa 5 — Finalização e Impressão</h2>
 
-    <ul>
-      <li>Copiar o número do pedido e acrescentar um zero à esquerda</li>
-      <li>Acessar: <strong>Outras Ações &gt; Imprimir</strong></li>
-      <li>Informar o número do pedido nos dois campos</li>
-      <li>Salvar em: <strong>Z:\Vilmar\Pedidos de Compras</strong></li>
-    </ul>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Copiar o número do pedido e acrescentar zero à esquerda</span></label>
+      <label><input type="checkbox"><span>Acessar Outras Ações &gt; Imprimir</span></label>
+      <label><input type="checkbox"><span>Informar o número do pedido nos dois campos</span></label>
+      <label><input type="checkbox"><span>Salvar em Z:\Vilmar\Pedidos de Compras</span></label>
+    </div>
   </div>
 
   <div class="actions">
     <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
   </div>
 
 </div>
 
 <script>
+// PARTICLES
 const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
 canvas.width=innerWidth;canvas.height=innerHeight;
 const p=[];
-for(let i=0;i<130;i++){
+for(let i=0;i<120;i++){
   p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
 }
 function anim(){
@@ -260,6 +236,19 @@ function anim(){
 }
 anim();
 onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('ache_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('ache_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('ache_check_'+i);
+  });
+}
 </script>
 
 </body>
