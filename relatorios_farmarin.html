@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relatórios • FARMARIN</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section h3{
+  font-family:'Orbitron';
+  color:#00ffaa;
+  margin-top:18px;
+  margin-bottom:10px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+.path{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>🏷️ FARMARIN</h1>
+  <p>Relatórios • Faturamento e Estoque</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>📌 Observação Importante</h2>
+    <div class="alert">
+      ⚠️ A FARMARIN solicita as quantidades em <strong>caixas (QUANTIDADE CX)</strong>.
+    </div>
+
+    <h3>📌 Fonte de dados</h3>
+    <p>Os dados de faturamento são obtidos a partir da planilha <strong>“NOTAS FISCAIS V4.6”</strong>.</p>
+
+    <div class="alert">
+      ⚠️ Caso não encontre o padrão ou tenha qualquer dúvida, interrompa o processo e solicite orientação. Não prossiga em caso de incerteza.
+    </div>
+  </div>
+
+  <!-- FATURAMENTO -->
+  <div class="section">
+    <h2>💰 Relatório de Faturamento — FARMARIN</h2>
+
+    <h3>📌 Campos obrigatórios (layout FARMARIN)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>DISTRIBUIDOR/CD</span></label>
+      <label><input type="checkbox"><span>DATA</span></label>
+      <label><input type="checkbox"><span>PRODUTO</span></label>
+      <label><input type="checkbox"><span>CNPJ CLIENTE</span></label>
+      <label><input type="checkbox"><span>NOME CLIENTE</span></label>
+      <label><input type="checkbox"><span>UF</span></label>
+      <label><input type="checkbox"><span>CIDADE</span></label>
+      <label><input type="checkbox"><span>FATOR_UNI</span></label>
+      <label><input type="checkbox"><span>QUANTIDADE CX</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Os campos devem respeitar exatamente a nomenclatura e a estrutura solicitada pelo fornecedor (sem alterar layout).
+    </div>
+
+    <h3>🔎 Filtros no Laboratório</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No campo Laboratório, selecionar exclusivamente <strong>FARMARIN</strong></span></label>
+      <label><input type="checkbox"><span>Selecionar Ano, Mês e Dia conforme o período solicitado</span></label>
+      <label><input type="checkbox"><span>Confirmar que após filtrar aparecem apenas os dados do período/laboratório</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Não copie os dados juntamente com o cabeçalho. Copie somente os dados.
+    </div>
+
+    <h3>📌 Colagem dos dados</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir o padrão de faturamento da FARMARIN</span></label>
+      <label><input type="checkbox"><span>Colar as informações a partir da <strong>segunda linha</strong>, mantendo cabeçalho separado</span></label>
+      <label><input type="checkbox"><span>Se aparecer “#”, dar duplo clique no limite da coluna para autoajustar</span></label>
+      <label><input type="checkbox"><span>Salvar com o nome: <strong>FARMARIN_REL_FAT</strong></span></label>
+    </div>
+  </div>
+
+  <!-- ESTOQUE -->
+  <div class="section">
+    <h2>📦 Relatório de Estoque — FARMARIN</h2>
+
+    <h3>📌 Campos obrigatórios (layout FARMARIN)</h3>
+    <div class="note">
+      Matriz/Filial | Descrição | Desc. Produto Específica | QTD Caixa
+    </div>
+
+    <h3>📌 Fonte de dados</h3>
+    <p>Os dados de estoque são obtidos a partir da planilha <strong>“Tabela de preços”</strong>.</p>
+
+    <h3>🔎 Filtrar apenas FARMARIN (Tabela de Preços)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha Tabela de Preços (sem filtro aparece tudo)</span></label>
+      <label><input type="checkbox"><span>Expandir o filtro de <strong>Laboratório</strong></span></label>
+      <label><input type="checkbox"><span>Clicar em <strong>(Selecionar Tudo)</strong> para desmarcar todos</span></label>
+      <label><input type="checkbox"><span>Marcar apenas <strong>FARMARIN</strong> e clicar em OK</span></label>
+      <label><input type="checkbox"><span>Confirmar que agora aparecem somente itens FARMARIN</span></label>
+    </div>
+
+    <h3>📌 Filiais</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Verificar se o relatório foi solicitado para filial específica (por padrão vem todas)</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Copiar apenas os dados das colunas necessárias, sem cabeçalhos.
+    </div>
+
+    <h3>📌 Copiar e colar no padrão de estoque</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar somente as colunas: Matriz/Filial | Descrição | Desc. Produto Específica | QTD Caixa</span></label>
+      <label><input type="checkbox"><span>Copiar (CTRL+C)</span></label>
+      <label><input type="checkbox"><span>Abrir o padrão de estoque da FARMARIN, criar uma cópia</span></label>
+      <label><input type="checkbox"><span>Colar a partir da segunda linha (CTRL+V)</span></label>
+    </div>
+
+    <div class="checklist" style="margin-top:10px">
+      <label><input type="checkbox"><span>Salvar no mesmo local do faturamento (para facilitar localizar)</span></label>
+      <label><input type="checkbox"><span>Enviar os dois relatórios (Faturamento/Estoque) para quem solicitou</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('relatorios_farmarin_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('relatorios_farmarin_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('relatorios_farmarin_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
