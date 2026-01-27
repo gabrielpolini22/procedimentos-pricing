@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relatórios • HYPERA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section h3{
+  font-family:'Orbitron';
+  color:#00ffaa;
+  margin-top:18px;
+  margin-bottom:10px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+.code{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>HYPERA</h1>
+  <p>Relatórios • Faturamento e Estoque</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>📌 Observações importantes</h2>
+    <div class="alert">
+      ⚠️ Eles querem as <strong>quantidades unitárias</strong> no faturamento.<br>
+      ⚠️ No estoque, é necessário fazer <strong>tabela dinâmica</strong>.
+    </div>
+
+    <h3>📌 Padrão exigido (Faturamento)</h3>
+    <div class="note">
+      EMISSAO | CNPJ_CLI | RAZAO_SOCIAL | UF | COD_ITEM | DESCRICAO | QTD_UNIT | VALOR UNIT
+    </div>
+
+    <h3>📌 Fonte de dados</h3>
+    <p>Os dados você encontra na planilha <strong>NOTAS_FISCAIS_V4.6</strong>.</p>
+
+    <div class="alert">
+      ⚠️ Se você não encontrou ou ficou com dúvida, pergunte. Nunca faça quando tiver com dúvidas!
+    </div>
+  </div>
+
+  <!-- FATURAMENTO -->
+  <div class="section">
+    <h2>💰 Relatório de Faturamento — HYPERA</h2>
+
+    <h3>🔎 Filtros (Laboratório)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar no campo Laboratório: <strong>HYPERA</strong></span></label>
+      <label><input type="checkbox"><span>Selecionar também: <strong>BRAINFARMA</strong>, <strong>TAKEDA</strong> e <strong>SANOFI</strong></span></label>
+      <label><input type="checkbox"><span>(COSMED entra no grupo, mas se não existir na lista, não tem problema)</span></label>
+      <label><input type="checkbox"><span>Para selecionar vários, segurar <strong>CTRL</strong> e ir clicando</span></label>
+    </div>
+
+    <h3>📅 Período</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar Ano, Mês e Dia conforme solicitado</span></label>
+      <label><input type="checkbox"><span>Confirmar que após filtrar aparecem apenas os dados do período</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Copie apenas os dados (não copie cabeçalhos como EMISSAO, CNPJ_CLI etc).
+    </div>
+
+    <h3>📌 Colagem no padrão</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha padrão de faturamento da HYPERA e criar uma cópia</span></label>
+      <label><input type="checkbox"><span>Apagar todos os dados existentes e colar os dados copiados</span></label>
+      <label><input type="checkbox"><span>Se aparecer “#”, dar dois cliques nas colunas para ajustar o espaçamento</span></label>
+      <label><input type="checkbox"><span>Salvar o arquivo final</span></label>
+    </div>
+  </div>
+
+  <!-- ESTOQUE -->
+  <div class="section">
+    <h2>📦 Relatório de Estoque — HYPERA</h2>
+
+    <h3>📌 Formato desejado</h3>
+    <div class="note">
+      Descrição | Desc. Produto Específica | QTD Caixa
+    </div>
+
+    <h3>🔎 Filtrar na Tabela de Preços</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha <strong>Tabela de Preços</strong> (sem filtro aparece tudo)</span></label>
+      <label><input type="checkbox"><span>No filtro de Laboratório, selecionar: <strong>Hypera</strong>, <strong>Brainfarma</strong>, <strong>Takeda</strong>, <strong>Sanofi</strong> e <strong>Cosmed</strong></span></label>
+      <label><input type="checkbox"><span>Para selecionar vários, segurar <strong>CTRL</strong> e ir clicando</span></label>
+      <label><input type="checkbox"><span>Clicar em OK e confirmar que aparecem apenas os itens do grupo</span></label>
+    </div>
+
+    <h3>🏢 Filiais</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Verificar se o estoque foi solicitado para filial específica (por padrão vem todas)</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Selecionar apenas os dados (sem títulos) das colunas: Descrição | Desc. Produto Específica | QTD Caixa
+    </div>
+
+    <h3>📌 Preparar QTD Caixa (cálculo)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Copiar os dados (CTRL+C)</span></label>
+      <label><input type="checkbox"><span>Abrir o padrão de Estoque da Hypera, criar uma cópia</span></label>
+      <label><input type="checkbox"><span>Apagar dados antigos e colar os novos</span></label>
+      <label><input type="checkbox"><span>Adicionar colunas auxiliares: <strong>Fator</strong> e <strong>QTD</strong></span></label>
+      <label><input type="checkbox"><span>Calcular <strong>QTD Caixa = QTD / Fator</strong> na primeira linha e replicar</span></label>
+    </div>
+
+    <div class="code">Exemplo fórmula: = (QTD da linha) / (Fator da linha)</div>
+
+    <h3>📌 Transformar fórmula em valor</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar toda a coluna QTD Caixa</span></label>
+      <label><input type="checkbox"><span>CTRL+C e depois CTRL+V</span></label>
+      <label><input type="checkbox"><span>Escolher <strong>Colar valores</strong> (primeiro ícone de valores)</span></label>
+      <label><input type="checkbox"><span>Apagar as colunas <strong>Fator</strong> e <strong>QTD</strong></span></label>
+    </div>
+
+    <h3>📌 Tabela dinâmica (remover repetidos / somar)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar em qualquer lugar da tabela</span></label>
+      <label><input type="checkbox"><span>Inserir → <strong>Tabela Dinâmica</strong></span></label>
+      <label><input type="checkbox"><span>Selecionar <strong>Nova Planilha</strong> e clicar em OK</span></label>
+      <label><input type="checkbox"><span>Marcar campos: Descrição | Desc. Produto Específica | QTD</span></label>
+    </div>
+
+    <h3>📌 Ajustes no Design (Tabela Dinâmica)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Aba Design → Subtotais: <strong>Não mostrar subtotais</strong></span></label>
+      <label><input type="checkbox"><span>Aba Design → Totais gerais: <strong>Habilitado para linhas e colunas</strong></span></label>
+      <label><input type="checkbox"><span>Aba Design → Layout do relatório: <strong>Mostrar formato de tabela</strong></span></label>
+      <label><input type="checkbox"><span>Aba Design → Linhas em branco: <strong>Remover linha em branco após cada item</strong></span></label>
+    </div>
+
+    <h3>⚙️ Configurações do Campo</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Clicar com botão direito na tabela → <strong>Configurações do Campo</strong></span></label>
+      <label><input type="checkbox"><span>Aplicar o ajuste necessário solicitado (conforme padrão interno)</span></label>
+    </div>
+
+    <div class="note">
+      💡 Se você quiser, me diga qual detalhe final falta nessa parte de “Configurações do Campo” e eu coloco exatamente no procedimento.
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('relatorios_hypera_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('relatorios_hypera_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('relatorios_hypera_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
