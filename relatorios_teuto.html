@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relatórios • TEUTO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#0f2027,#000);
+  color:#fff;
+}
+canvas{position:fixed;inset:0;z-index:0}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 40px;
+  position:relative;
+  z-index:2;
+}
+header h1{
+  font-family:'Orbitron';
+  color:#00ffee;
+  font-size:2.6rem;
+  text-shadow:0 0 30px #00ffee;
+}
+header p{opacity:.7}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:0 auto 100px;
+  padding:20px;
+  position:relative;
+  z-index:2;
+}
+
+/* SECTION */
+.section{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:32px;
+  border:1px solid rgba(0,255,234,.25);
+  box-shadow:0 0 40px rgba(0,255,234,.15);
+  margin-bottom:40px;
+}
+
+/* TITLES */
+.section h2{
+  font-family:'Orbitron';
+  color:#00ffee;
+  margin-bottom:16px;
+}
+.section h3{
+  font-family:'Orbitron';
+  color:#00ffaa;
+  margin-top:18px;
+  margin-bottom:10px;
+}
+.section p{opacity:.9;line-height:1.7}
+
+/* CHECKLIST */
+.checklist label{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.checklist input{
+  accent-color:#00ffee;
+  width:18px;height:18px;
+  margin-top:3px;
+}
+.checklist input:checked + span{
+  text-decoration:line-through;
+  color:#00ffaa;
+}
+
+/* BOXES */
+.note{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(0,255,234,.10);
+  border-left:4px solid #00ffee;
+  border-radius:12px;
+}
+.alert{
+  margin-top:18px;
+  padding:16px 20px;
+  background:rgba(255,204,0,.12);
+  border-left:4px solid #ffcc00;
+  border-radius:12px;
+}
+.code{
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(0,255,234,.18);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color:#bffdf7;
+  overflow:auto;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.actions a,
+.actions button{
+  padding:14px 40px;
+  border-radius:40px;
+  background:linear-gradient(90deg,#00ffee,#0066ff);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(0,255,234,.6);
+  transition:.4s;
+}
+.actions a:hover,
+.actions button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 60px rgba(0,255,234,1);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>TEUTO</h1>
+  <p>Relatórios • Faturamento e Estoque</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>📌 Observações importantes</h2>
+    <div class="alert">
+      ⚠️ A TEUTO quer <strong>quantidade unitária</strong> no faturamento.<br>
+      ⚠️ Se você não encontrou ou ficou com dúvida, pergunte. Nunca faça quando tiver com dúvidas!
+    </div>
+
+    <h3>📌 Campos exigidos (Faturamento)</h3>
+    <div class="note">
+      UF | CNPJ_CLI | RAZAO SOCIAL | DESCRICAO | QTD_UNIT
+    </div>
+
+    <h3>📌 Fonte de dados</h3>
+    <p>Os dados você encontra na planilha <strong>NOTAS_FISCAIS_V4.6</strong> (neste caso, existe a coluna TEUTO).</p>
+  </div>
+
+  <!-- FATURAMENTO -->
+  <div class="section">
+    <h2>💰 Relatório de Faturamento — TEUTO</h2>
+
+    <h3>🔎 Filtros</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No campo Laboratório, selecionar apenas <strong>TEUTO</strong></span></label>
+      <label><input type="checkbox"><span>Selecionar Ano, Mês e Dia conforme solicitado</span></label>
+      <label><input type="checkbox"><span>Confirmar que após filtrar aparecem apenas os dados do período</span></label>
+    </div>
+
+    <div class="alert">
+      ⚠️ Copie apenas os dados. Não copie os cabeçalhos.
+    </div>
+
+    <h3>📌 Colagem no padrão</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha padrão de faturamento da TEUTO e criar uma cópia</span></label>
+      <label><input type="checkbox"><span>Apagar todos os dados antigos</span></label>
+      <label><input type="checkbox"><span>Colar os dados copiados abaixo dos cabeçalhos</span></label>
+      <label><input type="checkbox"><span>Se aparecer “#”, dar dois cliques nas colunas para ajustar o espaçamento</span></label>
+      <label><input type="checkbox"><span>Salvar o relatório de faturamento</span></label>
+    </div>
+
+    <div class="note">
+      ✅ Assim está pronto o relatório de faturamento da TEUTO.
+    </div>
+  </div>
+
+  <!-- ESTOQUE -->
+  <div class="section">
+    <h2>📦 Relatório de Estoque — TEUTO</h2>
+
+    <h3>📌 Preparação</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha padrão de estoque da TEUTO e criar uma cópia</span></label>
+      <label><input type="checkbox"><span>Abrir a planilha <strong>Tabela de preços</strong> e filtrar o fornecedor <strong>TEUTO</strong></span></label>
+    </div>
+
+    <h3>📌 Montar base de estoque</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Copiar a coluna <strong>COD MATRIZ/FILIAL</strong> (Tabela de preços) e colar em uma planilha nova</span></label>
+      <label><input type="checkbox"><span>Na planilha nova, criar a coluna <strong>QTD Estoque</strong></span></label>
+      <label><input type="checkbox"><span>Copiar a quantidade de estoque da Tabela de preços para a coluna QTD Estoque</span></label>
+    </div>
+
+    <h3>📌 Normalizar códigos (tirar X1/X2/X3/X4)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Selecionar a coluna COD MATRIZ/FILIAL na planilha nova</span></label>
+      <label><input type="checkbox"><span>Pressionar <strong>CTRL + L</strong> (Localizar/Substituir)</span></label>
+      <label><input type="checkbox"><span>Substituir <strong>X1</strong> por vazio (substituir tudo)</span></label>
+      <label><input type="checkbox"><span>Repetir para <strong>X2</strong>, <strong>X3</strong> e <strong>X4</strong></span></label>
+    </div>
+
+    <h3>📌 Fórmula de Estoque (SOMASE)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>No padrão de estoque (cópia), apagar dados antigos da coluna Estoque</span></label>
+      <label><input type="checkbox"><span>Na primeira linha de Estoque, inserir a fórmula SOMASE e replicar</span></label>
+    </div>
+
+    <div class="code">
+= SOMASE( Base!Coluna_COD_MATRIZ_FILIAL ; Código_da_linha_no_padrão ; Base!Coluna_QTD_ESTOQUE )
+    </div>
+
+    <h3>📌 Demanda (SOMASE no NOTAS_FISCAIS)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Abrir a planilha NOTAS_FISCAIS_V4.6 e arrastar a tabela para a direita (se necessário)</span></label>
+      <label><input type="checkbox"><span>Na coluna Demanda, fazer um SOMASE usando COD MATRIZ/FILIAL e a coluna QTD_UNIT</span></label>
+    </div>
+
+    <div class="code">
+= SOMASE( NOTAS!Coluna_COD_MATRIZ_FILIAL ; Código_da_linha_no_padrão ; NOTAS!Coluna_QTD_UNIT )
+    </div>
+
+    <h3>📌 Preço Médio (PROCX)</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Na coluna Preço Médio, usar PROCX para buscar a média de VL_UNIT pelo código</span></label>
+    </div>
+
+    <div class="code">
+= PROCX( Código_da_linha_no_padrão ; NOTAS!Coluna_COD_MATRIZ_FILIAL ; NOTAS!Coluna_Média_VL_UNIT )
+    </div>
+
+    <h3>📌 Transformar fórmulas em valores</h3>
+    <div class="checklist">
+      <label><input type="checkbox"><span>Copiar as fórmulas para todas as linhas (todas as filiais)</span></label>
+      <label><input type="checkbox"><span>Selecionar colunas Estoque, Demanda e Preço Médio</span></label>
+      <label><input type="checkbox"><span>CTRL+C e depois Colar → <strong>Valores</strong> (para travar os resultados)</span></label>
+    </div>
+
+    <div class="note">
+      💡 Após colar valores, o relatório fica estável e pronto para envio/análise.
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="menu.html">⬅ Voltar ao Menu</a>
+    <button onclick="resetChecklist()">Resetar checklist</button>
+  </div>
+
+</div>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+canvas.width=innerWidth;canvas.height=innerHeight;
+
+const p=[];
+for(let i=0;i<120;i++){
+  p.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6});
+}
+function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ffee';
+  p.forEach(a=>{
+    a.x+=a.vx;a.y+=a.vy;
+    if(a.x<0||a.x>canvas.width)a.vx*=-1;
+    if(a.y<0||a.y>canvas.height)a.vy*=-1;
+    ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+  });
+  requestAnimationFrame(anim);
+}
+anim();
+onresize=()=>{canvas.width=innerWidth;canvas.height=innerHeight}
+
+// CHECKLIST STORAGE
+const checks=document.querySelectorAll('.checklist input');
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('relatorios_teuto_check_'+i)==='true';
+  c.addEventListener('change',()=>localStorage.setItem('relatorios_teuto_check_'+i,c.checked));
+});
+function resetChecklist(){
+  checks.forEach((c,i)=>{
+    c.checked=false;
+    localStorage.removeItem('relatorios_teuto_check_'+i);
+  });
+}
+</script>
+
+</body>
+</html>
