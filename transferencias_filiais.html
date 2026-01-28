@@ -15,12 +15,7 @@ body{
   color:#fff;
   min-height:100vh;
 }
-
-/* HEADER */
-header{
-  text-align:center;
-  padding:60px 20px 30px;
-}
+header{text-align:center;padding:60px 20px 30px}
 header h1{
   font-family:'Orbitron';
   color:#00ffee;
@@ -28,8 +23,6 @@ header h1{
   text-shadow:0 0 30px #00ffee;
 }
 header p{opacity:.7;margin-top:10px}
-
-/* CONTAINER */
 .container{
   max-width:1100px;
   margin:0 auto 60px;
@@ -38,8 +31,6 @@ header p{opacity:.7;margin-top:10px}
   flex-direction:column;
   gap:30px;
 }
-
-/* BLOCO */
 .block{
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(18px);
@@ -48,16 +39,11 @@ header p{opacity:.7;margin-top:10px}
   border:1px solid rgba(0,255,234,.15);
   box-shadow:0 0 40px rgba(0,255,234,.12);
 }
-
-/* TITULOS */
 .block h2{
   font-family:'Orbitron';
   color:#00ffee;
   margin-bottom:10px;
 }
-.block p{opacity:.85;margin-bottom:15px}
-
-/* CHECKLIST */
 .checklist{
   display:flex;
   flex-direction:column;
@@ -71,54 +57,24 @@ header p{opacity:.7;margin-top:10px}
   padding:10px 14px;
   border-radius:12px;
   background:rgba(0,0,0,.25);
-  transition:.3s;
 }
-.checklist label:hover{background:rgba(0,255,234,.12)}
 .checklist input{accent-color:#00ffee;margin-top:4px}
-.checklist span{line-height:1.5}
-
-/* ALERTAS */
-.tip{
+.tip,.alert,.danger{
   margin-top:18px;
   padding:14px;
-  border-left:4px solid #00ffee;
-  background:rgba(0,255,234,.1);
   border-radius:10px;
 }
-.alert{
-  margin-top:18px;
-  padding:14px;
-  border-left:4px solid #ffae00;
-  background:rgba(255,174,0,.12);
-  border-radius:10px;
-}
-.danger{
-  margin-top:18px;
-  padding:14px;
-  border-left:4px solid #ff4444;
-  background:rgba(255,68,68,.12);
-  border-radius:10px;
-}
-
-/* BOTÃO */
-.back{
-  text-align:center;
-  margin-top:10px;
-}
+.tip{border-left:4px solid #00ffee;background:rgba(0,255,234,.1)}
+.alert{border-left:4px solid #ffae00;background:rgba(255,174,0,.12)}
+.danger{border-left:4px solid #ff4444;background:rgba(255,68,68,.12)}
+.back{text-align:center}
 .back a{
-  display:inline-block;
   padding:14px 40px;
   border-radius:40px;
   background:linear-gradient(90deg,#00ffee,#0066ff);
   color:#000;
   font-weight:600;
   text-decoration:none;
-  box-shadow:0 0 30px rgba(0,255,234,.7);
-  transition:.4s;
-}
-.back a:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 60px rgba(0,255,234,1);
 }
 </style>
 </head>
@@ -132,122 +88,151 @@ header p{opacity:.7;margin-top:10px}
 
 <div class="container">
 
-  <!-- ETAPA 1 -->
-  <div class="block">
-    <h2>📌 Etapa 1 – Arquivo Excel (TRANSF...)</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Abrir o arquivo Excel “TRANSF...”</span></label>
-      <label><input type="checkbox"><span>Selecionar colunas E até H → botão direito → Reexibir</span></label>
-    </div>
-  </div>
-
-  <!-- ETAPA 2 -->
-  <div class="block">
-    <h2>📌 Etapa 2 – Solicitação de Paletes</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Encaminhar solicitação ao Jackson</span></label>
-      <label><input type="checkbox"><span>Solicitar quantidade de paletes</span></label>
-      <label><input type="checkbox"><span>Preencher conforme retorno recebido</span></label>
-    </div>
-
-    <div class="alert">
-      ⚠️ Cada caminhão comporta <strong>até 11 paletes</strong>.  
-      Acima disso, comunicar <strong>João ou Vilmar</strong>.
-    </div>
-  </div>
-
-  <!-- ETAPA 3 -->
-  <div class="block">
-    <h2>📌 Etapa 3 – Acesso ao Protheus</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Acessar o Protheus</span></label>
-      <label><input type="checkbox"><span>Selecionar a filial correta</span></label>
-      <label><input type="checkbox"><span>Conferir origem e destino no Excel</span></label>
-      <label><input type="checkbox"><span>Selecionar Ambiente 5 – Faturamento</span></label>
-      <label><input type="checkbox"><span>Clicar em Entrar</span></label>
-    </div>
-  </div>
-
-  <!-- ETAPA 4 -->
-  <div class="block">
-    <h2>📌 Etapa 4 – Produtos e Kardex</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Acessar rotina Produtos (MATA010)</span></label>
-      <label><input type="checkbox"><span>Compras → Cadastros → Produtos</span></label>
-      <label><input type="checkbox"><span>Confirmar operação</span></label>
-      <label><input type="checkbox"><span>Outras Ações → Kardex</span></label>
-      <label><input type="checkbox"><span>Confirmar armazém 01 ou 06</span></label>
-    </div>
-  </div>
-
-  <!-- ETAPA 5 -->
-  <div class="block">
-    <h2>📌 Etapa 5 – Documento / CFO</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Localizar último CFO iniciado com “21”</span></label>
-      <label><input type="checkbox"><span>Copiar número antes do “/”</span></label>
-      <label><input type="checkbox"><span>Pesquisar documento no Windows</span></label>
-      <label><input type="checkbox"><span>Localizar o item dentro da nota</span></label>
-      <label><input type="checkbox"><span>Copiar Valor Unitário (UV)</span></label>
-      <label><input type="checkbox"><span>Colar UV no campo Custo</span></label>
-    </div>
-
-    <div class="tip">
-      💡 <strong>MU = Venda Unitária</strong>  
-      Sempre conferir: Quantidade ÷ Valor Unitário
-    </div>
-  </div>
-
-  <!-- ETAPA 6 -->
-  <div class="block">
-    <h2>📌 Etapa 6 – Conversões de Unidade</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Itens M11 e M12 → converter sempre para CAIXA</span></label>
-      <label><input type="checkbox"><span>Dividir quantidade pela conversão do item</span></label>
-    </div>
-
-    <div class="danger">
-      ❗ Códigos iniciados com <strong>M</strong> ou <strong>C</strong> → unidade CAIXA  
-      ❗ Códigos iniciados com <strong>MU</strong> → unidade UNITÁRIA
-    </div>
-  </div>
-
-  <!-- ETAPA 7 -->
-  <div class="block">
-    <h2>📌 Etapa 7 – Pedido de Venda (MATA410)</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Acessar Faturamento → Pedido de Venda</span></label>
-      <label><input type="checkbox"><span>Localizar última transferência</span></label>
-      <label><input type="checkbox"><span>Código Sulmedic: 000030</span></label>
-      <label><input type="checkbox"><span>Outras Ações → Copiar (Réplica)</span></label>
-      <label><input type="checkbox"><span>Excluir produtos antigos</span></label>
-      <label><input type="checkbox"><span>Inserir novos produtos</span></label>
-      <label><input type="checkbox"><span>Quantidade em CAIXA</span></label>
-      <label><input type="checkbox"><span>Preço Unitário conforme NF</span></label>
-      <label><input type="checkbox"><span>Tp. Operação = F</span></label>
-      <label><input type="checkbox"><span>Informar número da reserva (se houver)</span></label>
-    </div>
-  </div>
-
-  <!-- ETAPA 8 -->
-  <div class="block">
-    <h2>📌 Etapa 8 – Finalização e Comunicação</h2>
-    <div class="checklist">
-      <label><input type="checkbox"><span>Salvar pedido</span></label>
-      <label><input type="checkbox"><span>Copiar número do Pedido de Venda</span></label>
-      <label><input type="checkbox"><span>Pesquisar pedido no Protheus</span></label>
-      <label><input type="checkbox"><span>Capturar print da transferência</span></label>
-      <label><input type="checkbox"><span>Responder e-mail do solicitante</span></label>
-      <label><input type="checkbox"><span>Atualizar título e destinatários</span></label>
-      <label><input type="checkbox"><span>Enviar e-mail</span></label>
-    </div>
-  </div>
-
-  <div class="back">
-    <a href="menu.html">⬅ Voltar ao Menu</a>
-  </div>
-
+<!-- 1 -->
+<div class="block">
+<h2>📌 Abertura do Arquivo</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Abrir o Excel “TRANSF...”</span></label>
+</div>
 </div>
 
+<!-- 2 -->
+<div class="block">
+<h2>📌 Solicitação de Paletes</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Encaminhar solicitação ao Jackson</span></label>
+<label><input type="checkbox"><span>Solicitar quantidade de paletes</span></label>
+<label><input type="checkbox"><span>Preencher conforme retorno</span></label>
+</div>
+<div class="alert">
+Cada caminhão comporta no máximo <strong>11 paletes</strong>.  
+Se ultrapassar, comunicar <strong>João ou Vilmar</strong>.
+</div>
+</div>
+
+<!-- 3 -->
+<div class="block">
+<h2>📌 Planilha – Comunicação</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Selecionar colunas E até H</span></label>
+<label><input type="checkbox"><span>Botão direito → Reexibir</span></label>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="block">
+<h2>📌 Protheus – Acesso Inicial</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Acessar o Protheus</span></label>
+<label><input type="checkbox"><span>Selecionar filial correta</span></label>
+<label><input type="checkbox"><span>Conferir origem e destino no Excel</span></label>
+<label><input type="checkbox"><span>Selecionar Ambiente 5 – Faturamento</span></label>
+<label><input type="checkbox"><span>Clicar em Entrar</span></label>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="block">
+<h2>📌 Produtos (MATA010)</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Acessar Produtos (Favoritos ou MATA010)</span></label>
+<label><input type="checkbox"><span>Compras → Cadastros → Produtos</span></label>
+<label><input type="checkbox"><span>Clicar em Confirmar</span></label>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="block">
+<h2>📌 Seleção do Item</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Coletar códigos no Excel</span></label>
+<label><input type="checkbox"><span>Localizar item manualmente (se necessário)</span></label>
+<label><input type="checkbox"><span>Clicar no item</span></label>
+<label><input type="checkbox"><span>Clicar em OK</span></label>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="block">
+<h2>📌 Kardex</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Aguardar redirecionamento da tela</span></label>
+<label><input type="checkbox"><span>Outras Ações → Kardex</span></label>
+<label><input type="checkbox"><span>Confirmar armazém 01 ou 06</span></label>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="block">
+<h2>📌 Documento / CFO</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Localizar último CFO iniciado em 21</span></label>
+<label><input type="checkbox"><span>Copiar número antes do “/”</span></label>
+<label><input type="checkbox"><span>Pesquisar documento no Windows</span></label>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="block">
+<h2>📌 Nota Fiscal</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Localizar item na nota</span></label>
+<label><input type="checkbox"><span>Identificar Valor Unitário</span></label>
+<label><input type="checkbox"><span>Anotar no Bloco de Notas</span></label>
+<label><input type="checkbox"><span>Colar no campo Custo</span></label>
+</div>
+<div class="tip">
+MU = Venda Unitária → Sempre conferir UV.
+</div>
+</div>
+
+<!-- 10 -->
+<div class="block">
+<h2>📌 Conversões</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>M11 e M12 → converter para CAIXA</span></label>
+<label><input type="checkbox"><span>Dividir quantidade pela conversão</span></label>
+</div>
+<div class="danger">
+M ou C = CAIXA | MU = UNITÁRIO
+</div>
+</div>
+
+<!-- 11 -->
+<div class="block">
+<h2>📌 Pedido de Venda (MATA410)</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Faturamento → Pedido de Venda</span></label>
+<label><input type="checkbox"><span>Localizar última transferência</span></label>
+<label><input type="checkbox"><span>Código Sulmedic 000030</span></label>
+<label><input type="checkbox"><span>Outras Ações → Copiar (Réplica)</span></label>
+<label><input type="checkbox"><span>Excluir itens antigos</span></label>
+<label><input type="checkbox"><span>Inserir novos produtos</span></label>
+<label><input type="checkbox"><span>Quantidade em CAIXA</span></label>
+<label><input type="checkbox"><span>Prc Unitário conforme NF</span></label>
+<label><input type="checkbox"><span>Tp. Operação = F</span></label>
+<label><input type="checkbox"><span>Informar Reserva (se houver)</span></label>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="block">
+<h2>📌 Finalização</h2>
+<div class="checklist">
+<label><input type="checkbox"><span>Salvar Pedido</span></label>
+<label><input type="checkbox"><span>Copiar número do Pedido</span></label>
+<label><input type="checkbox"><span>Pesquisar Pedido no Protheus</span></label>
+<label><input type="checkbox"><span>Print da transferência</span></label>
+<label><input type="checkbox"><span>Responder e-mail do solicitante</span></label>
+<label><input type="checkbox"><span>Atualizar título e destinatários</span></label>
+<label><input type="checkbox"><span>Enviar e-mail</span></label>
+</div>
+</div>
+
+<div class="back">
+<a href="menu.html">⬅ Voltar ao Menu</a>
+</div>
+
+</div>
 </body>
 </html>
